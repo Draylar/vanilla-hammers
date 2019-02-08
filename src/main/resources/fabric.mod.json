@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "side": "universal",
   "initializers": [
-    "net.fabricmc.example.ExampleMod"
+    "com.github.draylar.modid.ExampleMod"
   ],
   "requires": {
     "fabric": "*"
