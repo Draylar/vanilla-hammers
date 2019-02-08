@@ -1,5 +1,7 @@
 # Fabric Example Mod
 
+Draylar's fork of the fabric-example-mod. Changes package structure to my usual one.
+
 ## Setup
 
 1. Edit build.gradle and mod.json to suit your needs.
