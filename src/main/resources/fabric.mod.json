@@ -1,11 +1,11 @@
 {
-  "id": "modid",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
-  "version": "1.0.0",
+  "id": "vanilla-hammers",
+  "name": "Vanilla Hammers",
+  "description": "Adds 9 new hammers to the game based on vanilla materials.",
+  "version": "1.0.2",
   "side": "universal",
   "initializers": [
-    "com.github.draylar.modid.ExampleMod"
+    "com.github.draylar.vh.VanillaHammers"
   ],
   "requires": {
     "fabric": "*"

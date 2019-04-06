@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.github.draylar.modid.mixin",
+  "package": "com.github.draylar.vh.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
 

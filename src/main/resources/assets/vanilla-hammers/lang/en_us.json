@@ -1,0 +1,13 @@
+{
+  // "item-registry": "Name",
+  "item.vanilla-hammers.wooden_hammer": "Wooden Hammer",
+  "item.vanilla-hammers.stone_hammer": "Stone Hammer",
+  "item.vanilla-hammers.iron_hammer": "Iron Hammer",
+  "item.vanilla-hammers.golden_hammer": "Golden Hammer",
+  "item.vanilla-hammers.diamond_hammer": "Diamond Hammer",
+  "item.vanilla-hammers.emerald_hammer": "Emerald Hammer",
+  "item.vanilla-hammers.obsidian_hammer": "Obsidian Hammer",
+  "item.vanilla-hammers.lapis_hammer": "Lapis Lazuli Hammer",
+  "item.vanilla-hammers.quartz_hammer": "Quartz Hammer",
+  "item.vanilla-hammers.tater_hammer": "Lil Tater Hammer"
+}
