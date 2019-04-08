@@ -15,7 +15,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.github.draylar.vH.VanillaToolsets"
+      "com.github.draylar.vh.VanillaHammers"
     ]
   },
   "requires": {

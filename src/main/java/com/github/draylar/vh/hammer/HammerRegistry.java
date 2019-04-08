@@ -1,7 +1,7 @@
 package com.github.draylar.vh.hammer;
 
 import com.github.draylar.vh.config.ConfigHolder;
-import net.fabricmc.loader.FabricLoader;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.resource.ResourceReloadHandler;
@@ -29,50 +29,9 @@ public class HammerRegistry
 
         if(ConfigHolder.configInstance.enableTaterHammer)
         {
-            if (FabricLoader.INSTANCE.isModLoaded("lil-tater"))
+            if (FabricLoader.getInstance().isModLoaded("lil-tater"))
             {
-                System.out.println("[Vanilla Hammers] lil tater is lil loaded, adding lil tater hammer");
-
-                ToolMaterial toolMaterial = new ToolMaterial()
-                {
-                    @Override
-                    public int getDurability()
-                    {
-                        return 500;
-                    }
-
-                    @Override
-                    public float getBlockBreakingSpeed()
-                    {
-                        return 1.5f;
-                    }
-
-                    @Override
-                    public float getAttackDamage()
-                    {
-                        return 4;
-                    }
-
-                    @Override
-                    public int getMiningLevel()
-                    {
-                        return 1;
-                    }
-
-                    @Override
-                    public int getEnchantability()
-                    {
-                        return 100;
-                    }
-
-                    @Override
-                    public Ingredient getRepairIngredient()
-                    {
-                        return Ingredient.ofItems(Registry.ITEM.get(new Identifier("lil-tater", "lil_tater")));
-                    }
-                };
-
-                register(toolMaterial, 3, 0, "tater");
+                register(HammerMaterials.POTATO, 3, 0, "tater");
             }
         }
     }
