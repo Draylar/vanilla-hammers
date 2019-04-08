@@ -1,17 +1,29 @@
 {
+  "schemaVersion": 1,
   "id": "vanilla-hammers",
+  "version": "1.0.3",
+
   "name": "Vanilla Hammers",
   "description": "Adds 9 new hammers to the game based on vanilla materials.",
-  "version": "1.0.2",
-  "side": "universal",
-  "initializers": [
-    "com.github.draylar.vh.VanillaHammers"
+  "authors": [
+    "Draylar"
   ],
+
+  "license": "GPLv3",
+  "icon": "assets/vanilla-hammers/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.github.draylar.vH.VanillaToolsets"
+    ]
+  },
   "requires": {
+    "fabricloader": "=>0.4.0",
     "fabric": "*"
   },
-  "mixins": {
-    "client": "modid.client.json",
-    "common": "modid.common.json"
-  }
+  "mixins": [
+    "modid.client.json",
+    "modid.common.json"
+  ]
 }
