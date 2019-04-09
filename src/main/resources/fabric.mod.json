@@ -18,6 +18,9 @@
       "com.github.draylar.vh.VanillaHammers"
     ]
   },
+  "mixins": [
+    "modid.common.json"
+  ],
   "requires": {
     "fabricloader": "=>0.4.0",
     "fabric": "*"
