@@ -53,7 +53,7 @@ public enum HammerMaterials implements ToolMaterial
     private final int enchantability;
     private final Lazy<Ingredient> repairIngredient;
 
-    private HammerMaterials(int int_1, int int_2, float float_1, float float_2, int int_3, Supplier<Ingredient> supplier_1) {
+    HammerMaterials(int int_1, int int_2, float float_1, float float_2, int int_3, Supplier<Ingredient> supplier_1) {
         this.miningLevel = int_1;
         this.durability = int_2;
         this.blockBreakSpeed = float_1;
@@ -83,6 +83,6 @@ public enum HammerMaterials implements ToolMaterial
     }
 
     public Ingredient getRepairIngredient() {
-        return (Ingredient)this.repairIngredient.get();
+        return this.repairIngredient.get();
     }
 }
