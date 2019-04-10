@@ -1,7 +1,7 @@
 package com.github.draylar.vh.config;
 
 import com.google.gson.Gson;
-import net.fabricmc.loader.FabricLoader;
+import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -18,7 +18,7 @@ public class ConfigLoader
     public void checkConfigFolder()
     {
         // ping config path is [run environment]/config/ping
-        Path configPath = Paths.get(new File(FabricLoader.INSTANCE.getConfigDirectory().getAbsolutePath() + "//vanilla_hammers").getAbsolutePath());
+        Path configPath = Paths.get(new File(FabricLoader.getInstance().getConfigDirectory().getAbsolutePath() + "/vanilla_hammers").getAbsolutePath());
 
         if (configPath.toFile().isDirectory()) checkConfigFile(configPath);
 
@@ -39,7 +39,7 @@ public class ConfigLoader
      */
     public void checkConfigFile(Path path)
     {
-        Path jsonPath = Paths.get(path + "\\vanilla_hammers.json");
+        Path jsonPath = Paths.get(path + "/vanilla_hammers.json");
 
         if (!jsonPath.toFile().exists())
         {
