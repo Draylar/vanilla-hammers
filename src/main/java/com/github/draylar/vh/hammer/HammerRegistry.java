@@ -12,18 +12,18 @@ public class HammerRegistry
 {
     public static void registerHammers()
     {
-        register(HammerMaterials.WOOD, 3, -3, "wooden");
-        register(HammerMaterials.STONE, 4, -3.1f, "stone");
-        register(HammerMaterials.IRON, 5, -3.3f, "iron");
-        register(HammerMaterials.GOLD, 5, -3, "golden");
-        register(HammerMaterials.DIAMOND, 10, -3.5f, "diamond");
+        register(HammerMaterials.WOOD, 3, -2.5f, "wooden");
+        register(HammerMaterials.STONE, 4, -2.6f, "stone");
+        register(HammerMaterials.IRON, 5, -2.8f, "iron");
+        register(HammerMaterials.GOLD, 5, -2.5f, "golden");
+        register(HammerMaterials.DIAMOND, 10, -3f, "diamond");
 
         if(ConfigHolder.configInstance.enableExtraMaterials)
         {
-            register(HammerMaterials.EMERALD, 11, -3.5f, "emerald");
-            register(HammerMaterials.OBSIDIAN, 7, -4f, "obsidian");
-            register(HammerMaterials.QUARTZ, 5, -2.5f, "lapis");
-            register(HammerMaterials.LAPIS, 3, -3, "quartz");
+            register(HammerMaterials.EMERALD, 11, -3f, "emerald");
+            register(HammerMaterials.OBSIDIAN, 7, -3.5f, "obsidian");
+            register(HammerMaterials.QUARTZ, 5, -2f, "lapis");
+            register(HammerMaterials.LAPIS, 3, -2.5f, "quartz");
         }
 
 
