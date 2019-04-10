@@ -102,13 +102,16 @@ public class HammerItem extends PickaxeItem
             {
                 if(world.getBlockState(pos).getBlock().getHardness(null, null, null) <= originStrength * 2)
                 {
-                    BlockState state = world.getBlockState(pos);
-                    world.breakBlock(pos, false);
-
-                    if (!playerEntity.isCreative())
+                    if(this.isEffectiveOn(world.getBlockState(pos)))
                     {
-                        Block.dropStacks(state, world, pos, null, playerEntity, playerEntity.inventory.getMainHandStack());
-                        playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
+                        BlockState state = world.getBlockState(pos);
+                        world.breakBlock(pos, false);
+
+                        if (!playerEntity.isCreative())
+                        {
+                            Block.dropStacks(state, world, pos, null, playerEntity, playerEntity.inventory.getMainHandStack());
+                            playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
+                        }
                     }
                 }
             }

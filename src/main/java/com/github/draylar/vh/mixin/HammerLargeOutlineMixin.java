@@ -76,13 +76,12 @@ public class HammerLargeOutlineMixin
                             {
                                 if(client.world.getBlockState(blockPos_1.add(x, 0, z)) != Blocks.AIR.getDefaultState())
                                 {
-                                    shape = VoxelShapes.union(shape, Block.createCuboidShape(16 * x, 0, 16 * z, 16 + (16 * x), 16, 16 + (16 * z)));
+                                    shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(x, 0, z)).getOutlineShape(client.world, blockPos_1.add(x, 0, z)).offset(x, 0, z));
                                 }
                             }
                         }
 
                         WorldRenderer.drawShapeOutline(shape, (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
-
 
                         GlStateManager.popMatrix();
                         GlStateManager.matrixMode(5888);
@@ -113,7 +112,7 @@ public class HammerLargeOutlineMixin
                             {
                                 if(client.world.getBlockState(blockPos_1.add(0, y, z)) != Blocks.AIR.getDefaultState())
                                 {
-                                    shape = VoxelShapes.union(shape, Block.createCuboidShape(0, 16 * y , 16 * z, 16, 16 + (16 * y), 16 + (16 * z)));
+                                    shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(0, y, z)).getOutlineShape(client.world, blockPos_1.add(0, y, z)).offset(0, y, z));
                                 }
                             }
                         }
@@ -149,7 +148,7 @@ public class HammerLargeOutlineMixin
                             {
                                 if(client.world.getBlockState(blockPos_1.add(x, y, 0)) != Blocks.AIR.getDefaultState())
                                 {
-                                    shape = VoxelShapes.union(shape, Block.createCuboidShape(16 * x, 16 * y, 0, 16 + (16 * x), 16 + (16 * y), 16));
+                                    shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(x, y, 0)).getOutlineShape(client.world, blockPos_1.add(x, y, 0)).offset(x, y, 0));
                                 }
                             }
                         }
