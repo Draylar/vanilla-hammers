@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "vanilla-hammers",
-  "version": "1.1.0",
+  "version": "1.1.1",
 
   "name": "Vanilla Hammers",
   "description": "Adds 9 new hammers to the game based on vanilla materials.",
@@ -19,7 +19,7 @@
     ]
   },
   "mixins": [
-    "modid.common.json"
+    "modid.client.json"
   ],
   "requires": {
     "fabricloader": "=>0.4.0",
