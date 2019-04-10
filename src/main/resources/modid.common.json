@@ -3,7 +3,8 @@
   "package": "com.github.draylar.vh.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-
+    "CancelHammerOutlineMixin",
+    "HammerLargeOutlineMixin"
   ],
   "injectors": {
     "defaultRequire": 1
