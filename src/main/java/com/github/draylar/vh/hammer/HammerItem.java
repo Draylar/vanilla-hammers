@@ -48,62 +48,68 @@ public class HammerItem extends PickaxeItem
         {
             Direction.Axis axis = result.getSide().getAxis();
 
+            // we can pass null because the method doesn't use the variables :)
+            float strength = state.getBlock().getHardness(null, null, null);
+
             if (axis == Direction.Axis.Y)
             {
-                attemptBreakBlock(world, blockPos.offset(Direction.NORTH), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.EAST), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.WEST), player);
+                attemptBreakBlock(world, blockPos.offset(Direction.NORTH), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.EAST), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.WEST), player, strength);
 
-                attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.EAST), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.SOUTH), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.WEST), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.NORTH), player);
+                attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.EAST), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.SOUTH), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.WEST), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.NORTH), player, strength);
             }
 
             else if (axis == Direction.Axis.Z)
             {
-                attemptBreakBlock(world, blockPos.offset(Direction.WEST), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.EAST), player);
+                attemptBreakBlock(world, blockPos.offset(Direction.WEST), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.EAST), player, strength);
 
-                attemptBreakBlock(world, blockPos.offset(Direction.UP), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.DOWN), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.UP), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.UP), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.DOWN), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.DOWN), player);
+                attemptBreakBlock(world, blockPos.offset(Direction.UP), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.DOWN), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.UP), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.UP), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.DOWN), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.DOWN), player, strength);
             }
 
             else if (axis == Direction.Axis.X)
             {
-                attemptBreakBlock(world, blockPos.offset(Direction.NORTH), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH), player);
+                attemptBreakBlock(world, blockPos.offset(Direction.NORTH), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH), player, strength);
 
-                attemptBreakBlock(world, blockPos.offset(Direction.UP), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.DOWN), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.UP), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.UP), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.DOWN), player);
-                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.DOWN), player);
+                attemptBreakBlock(world, blockPos.offset(Direction.UP), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.DOWN), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.UP), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.UP), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.DOWN), player, strength);
+                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.DOWN), player, strength);
             }
         }
 
         return super.beforeBlockBreak(state, world, blockPos, player);
     }
 
-    public void attemptBreakBlock(World world, BlockPos pos, PlayerEntity playerEntity)
+    public void attemptBreakBlock(World world, BlockPos pos, PlayerEntity playerEntity, float originStrength)
     {
         if(!world.isClient)
         {
             if (EFFECTIVE_BLOCKS.contains(world.getBlockState(pos).getBlock()) || EFFECTIVE_MATERIALS.contains(world.getBlockState(pos).getMaterial()))
             {
-                BlockState state = world.getBlockState(pos);
-                world.breakBlock(pos, false);
-
-                if(!playerEntity.isCreative())
+                if(world.getBlockState(pos).getBlock().getHardness(null, null, null) <= originStrength * 2)
                 {
-                    Block.dropStacks(state, world, pos, null, playerEntity, playerEntity.inventory.getMainHandStack());
-                    playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
+                    BlockState state = world.getBlockState(pos);
+                    world.breakBlock(pos, false);
+
+                    if (!playerEntity.isCreative())
+                    {
+                        Block.dropStacks(state, world, pos, null, playerEntity, playerEntity.inventory.getMainHandStack());
+                        playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
+                    }
                 }
             }
         }
