@@ -4,16 +4,20 @@ import com.github.draylar.vh.hammer.HammerItem;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.entity.VerticalEntityPosition;
+import net.minecraft.util.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -39,7 +43,6 @@ public class HammerLargeOutlineMixin
         {
             if (client.hitResult instanceof BlockHitResult)
             {
-
                 BlockHitResult hitResult = (BlockHitResult) client.hitResult;
                 BlockPos blockPos_1 = hitResult.getBlockPos();
                 BlockState blockState_1 = client.world.getBlockState(blockPos_1);
@@ -59,7 +62,28 @@ public class HammerLargeOutlineMixin
                         double double_1 = camera.getPos().x;
                         double double_2 = camera.getPos().y;
                         double double_3 = camera.getPos().z;
-                        WorldRenderer.drawShapeOutline(Block.createCuboidShape(-16, 0, -16, 32, 16, 32), (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
+
+                        // -x is west
+                        // x is east
+                        // -z is north
+                        // z is south
+
+                        VoxelShape shape = VoxelShapes.empty();
+
+                        for (int x = -1; x < 2; x++)
+                        {
+                            for (int z = -1; z < 2; z++)
+                            {
+                                if(client.world.getBlockState(blockPos_1.add(x, 0, z)) != Blocks.AIR.getDefaultState())
+                                {
+                                    shape = VoxelShapes.union(shape, Block.createCuboidShape(16 * x, 0, 16 * z, 16 + (16 * x), 16, 16 + (16 * z)));
+                                }
+                            }
+                        }
+
+                        WorldRenderer.drawShapeOutline(shape, (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
+
+
                         GlStateManager.popMatrix();
                         GlStateManager.matrixMode(5888);
                         GlStateManager.depthMask(true);
@@ -80,7 +104,22 @@ public class HammerLargeOutlineMixin
                         double double_1 = camera.getPos().x;
                         double double_2 = camera.getPos().y;
                         double double_3 = camera.getPos().z;
-                        WorldRenderer.drawShapeOutline(Block.createCuboidShape(0, -16, -16, 16, 32, 32), (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
+
+                        VoxelShape shape = VoxelShapes.empty();
+
+                        for (int y = -1; y < 2; y++)
+                        {
+                            for (int z = -1; z < 2; z++)
+                            {
+                                if(client.world.getBlockState(blockPos_1.add(0, y, z)) != Blocks.AIR.getDefaultState())
+                                {
+                                    shape = VoxelShapes.union(shape, Block.createCuboidShape(0, 16 * y , 16 * z, 16, 16 + (16 * y), 16 + (16 * z)));
+                                }
+                            }
+                        }
+
+                        WorldRenderer.drawShapeOutline(shape, (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
+
                         GlStateManager.popMatrix();
                         GlStateManager.matrixMode(5888);
                         GlStateManager.depthMask(true);
@@ -101,7 +140,22 @@ public class HammerLargeOutlineMixin
                         double double_1 = camera.getPos().x;
                         double double_2 = camera.getPos().y;
                         double double_3 = camera.getPos().z;
-                        WorldRenderer.drawShapeOutline(Block.createCuboidShape(-16, -16, 0, 32, 32, 16), (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
+
+                        VoxelShape shape = VoxelShapes.empty();
+
+                        for (int x = -1; x < 2; x++)
+                        {
+                            for (int y = -1; y < 2; y++)
+                            {
+                                if(client.world.getBlockState(blockPos_1.add(x, y, 0)) != Blocks.AIR.getDefaultState())
+                                {
+                                    shape = VoxelShapes.union(shape, Block.createCuboidShape(16 * x, 16 * y, 0, 16 + (16 * x), 16 + (16 * y), 16));
+                                }
+                            }
+                        }
+
+                        WorldRenderer.drawShapeOutline(shape, (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
+
                         GlStateManager.popMatrix();
                         GlStateManager.matrixMode(5888);
                         GlStateManager.depthMask(true);

@@ -40,14 +40,13 @@ public class HammerItem extends PickaxeItem
         Vec3d vec3d_1 = player.getCameraPosVec(1);
         Vec3d vec3d_2 = player.getRotationVec(1);
         Vec3d vec3d_3 = vec3d_1.add(vec3d_2.x * 5, vec3d_2.y * 5, vec3d_2.z * 5);
-        HitResult result = world.rayTrace(new RayTraceContext(vec3d_1, vec3d_3, RayTraceContext.ShapeType.OUTLINE, true ? RayTraceContext.FluidHandling.ANY : RayTraceContext.FluidHandling.NONE, player));
+        BlockHitResult result = world.rayTrace(new RayTraceContext(vec3d_1, vec3d_3, RayTraceContext.ShapeType.OUTLINE, RayTraceContext.FluidHandling.ANY, player));
 
         // HitResult result = player.rayTrace(5, 1, true);
 
         if(result.getType() == HitResult.Type.BLOCK)
         {
-            BlockHitResult blockHitResult = (BlockHitResult) result;
-            Direction.Axis axis = blockHitResult.getSide().getAxis();
+            Direction.Axis axis = result.getSide().getAxis();
 
             if (axis == Direction.Axis.Y)
             {
