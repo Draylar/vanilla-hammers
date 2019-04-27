@@ -100,7 +100,8 @@ public class HammerItem extends PickaxeItem
         {
             if (EFFECTIVE_BLOCKS.contains(world.getBlockState(pos).getBlock()) || EFFECTIVE_MATERIALS.contains(world.getBlockState(pos).getMaterial()))
             {
-                if(world.getBlockState(pos).getBlock().getHardness(null, null, null) <= originStrength * 2)
+                float hardness = world.getBlockState(pos).getBlock().getHardness(null, null, null);
+                if(hardness <= originStrength * 2 && hardness > 0)
                 {
                     if(this.isEffectiveOn(world.getBlockState(pos)))
                     {
