@@ -1,0 +1,13 @@
+{
+  // "item-registry": "Name",
+  "item.vanilla-hammers.wooden_hammer": "木锤",
+  "item.vanilla-hammers.stone_hammer": "石锤",
+  "item.vanilla-hammers.iron_hammer": "铁锤",
+  "item.vanilla-hammers.golden_hammer": "金锤",
+  "item.vanilla-hammers.diamond_hammer": "钻石锤",
+  "item.vanilla-hammers.emerald_hammer": "绿宝石锤",
+  "item.vanilla-hammers.obsidian_hammer": "黑曜石锤",
+  "item.vanilla-hammers.lapis_hammer": "青金石锤",
+  "item.vanilla-hammers.quartz_hammer": "石英锤",
+  "item.vanilla-hammers.tater_hammer": "Lil Tater 锤"
+}
