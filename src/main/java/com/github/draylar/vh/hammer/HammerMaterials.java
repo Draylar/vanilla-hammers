@@ -14,34 +14,34 @@ import java.util.function.Supplier;
 
 public enum HammerMaterials implements ToolMaterial
 {
-    WOOD(0, 59 * VanillaHammers.DURABILITY_MODIFIER, 2.0F / 7f, 0.0f, 15, () -> {
+    WOOD(0, 59 * VanillaHammers.DURABILITY_MODIFIER, 2.0F / 3.5f, 0.0f, 15, () -> {
         return Ingredient.fromTag(ItemTags.PLANKS);
     }),
-    STONE(1, 131 * VanillaHammers.DURABILITY_MODIFIER, 4.0F / 7F, 0.0f, 5, () -> {
+    STONE(1, 131 * VanillaHammers.DURABILITY_MODIFIER, 4.0F / 3.5f, 0.0f, 5, () -> {
         return Ingredient.ofItems(Blocks.COBBLESTONE);
     }),
-    IRON(2, 250 * VanillaHammers.DURABILITY_MODIFIER, 6.0F / 7F, 0.0f, 14, () -> {
+    IRON(2, 250 * VanillaHammers.DURABILITY_MODIFIER, 6.0F / 3.5f, 0.0f, 14, () -> {
         return Ingredient.ofItems(Items.IRON_INGOT);
     }),
-    DIAMOND(3, 1561 * VanillaHammers.DURABILITY_MODIFIER, 8.0F / 7F, 0.0f, 10, () -> {
+    DIAMOND(3, 1561 * VanillaHammers.DURABILITY_MODIFIER, 8.0F / 3.5f, 0.0f, 10, () -> {
         return Ingredient.ofItems(Items.DIAMOND);
     }),
-    GOLD(0, 32 * VanillaHammers.DURABILITY_MODIFIER, 12.0F / 7F, 0.0f, 22, () -> {
+    GOLD(0, 32 * VanillaHammers.DURABILITY_MODIFIER, 12.0F / 3.5f, 0.0f, 22, () -> {
         return Ingredient.ofItems(Items.GOLD_INGOT);
     }),
-    EMERALD(3, 1028 * VanillaHammers.DURABILITY_MODIFIER, 12.0F / 7F, 0.0f, 25, () -> {
+    EMERALD(3, 1028 * VanillaHammers.DURABILITY_MODIFIER, 12.0F / 3.5f, 0.0f, 25, () -> {
         return Ingredient.ofItems(Items.EMERALD);
     }),
-    OBSIDIAN(2, 2048 * VanillaHammers.DURABILITY_MODIFIER, 5.0F / 7F, 0.0f, 5, () -> {
+    OBSIDIAN(2, 2048 * VanillaHammers.DURABILITY_MODIFIER, 5.0F / 3.5f, 0.0f, 5, () -> {
         return Ingredient.ofItems(Items.OBSIDIAN);
     }),
-    LAPIS(1, 220 * VanillaHammers.DURABILITY_MODIFIER, 6.0f / 7F, 0.0f, 30, () -> {
+    LAPIS(1, 220 * VanillaHammers.DURABILITY_MODIFIER, 6.0f / 3.5f, 0.0f, 30, () -> {
         return Ingredient.ofItems(Items.LAPIS_LAZULI);
     }),
-    QUARTZ(2, 1028 * VanillaHammers.DURABILITY_MODIFIER, 8.0F / 7F, 0.0f, 10, () -> {
+    QUARTZ(2, 1028 * VanillaHammers.DURABILITY_MODIFIER, 8.0F / 3.5f, 0.0f, 10, () -> {
         return Ingredient.ofItems(Items.QUARTZ);
     }),
-    POTATO(1, 500 * VanillaHammers.DURABILITY_MODIFIER, 4.0F / 7F, 0.0f, 100, () -> {
+    POTATO(1, 500 * VanillaHammers.DURABILITY_MODIFIER, 4.0F / 3.5f, 0.0f, 100, () -> {
         return Ingredient.ofItems(Registry.ITEM.get(new Identifier("lil-tater", "lil_tater")));
     });
 

@@ -8,7 +8,7 @@ import net.fabricmc.fabric.impl.registry.FuelRegistryImpl;
 
 public class VanillaHammers implements ModInitializer
 {
-	public static final int DURABILITY_MODIFIER = 6;
+	public static final int DURABILITY_MODIFIER = 5;
 
 	@Override
 	public void onInitialize()

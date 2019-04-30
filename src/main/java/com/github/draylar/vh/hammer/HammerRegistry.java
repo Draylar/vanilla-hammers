@@ -33,7 +33,7 @@ public class HammerRegistry
         {
             if (FabricLoader.getInstance().isModLoaded("lil-tater"))
             {
-                register(HammerMaterials.POTATO, 3, -2.3, "tater");
+                register(HammerMaterials.POTATO, 3, -2.3f, "tater");
             }
         }
     }
