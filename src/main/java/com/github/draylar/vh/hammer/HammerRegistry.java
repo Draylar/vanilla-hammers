@@ -10,9 +10,11 @@ import net.minecraft.util.registry.Registry;
 
 public class HammerRegistry
 {
+    public static HammerItem WOOD;
+
     public static void registerHammers()
     {
-        register(HammerMaterials.WOOD, 3, -2.5f, "wooden");
+        WOOD = register(HammerMaterials.WOOD, 3, -2.5f, "wooden");
         register(HammerMaterials.STONE, 4, -2.6f, "stone");
         register(HammerMaterials.IRON, 5, -2.8f, "iron");
         register(HammerMaterials.GOLD, 5, -2.5f, "golden");
@@ -31,13 +33,13 @@ public class HammerRegistry
         {
             if (FabricLoader.getInstance().isModLoaded("lil-tater"))
             {
-                register(HammerMaterials.POTATO, 3, 0, "tater");
+                register(HammerMaterials.POTATO, 3, -2.3, "tater");
             }
         }
     }
 
-    private static void register(ToolMaterial material, int attackDamage, float attackSpeed, String hammerName)
+    private static HammerItem register(ToolMaterial material, int attackDamage, float attackSpeed, String hammerName)
     {
-        Registry.register(Registry.ITEM, new Identifier("vanilla-hammers", hammerName + "_hammer"), new HammerItem(material, attackDamage, attackSpeed));
+        return Registry.register(Registry.ITEM, new Identifier("vanilla-hammers", hammerName + "_hammer"), new HammerItem(material, attackDamage, attackSpeed));
     }
 }
