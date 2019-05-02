@@ -12,12 +12,12 @@ minecraft {
 }
 
 dependencies {
-	minecraft "com.mojang:minecraft:19w14b"
-	mappings "net.fabricmc:yarn:19w14b.4"
-	modCompile "net.fabricmc:fabric-loader:0.4.0+build.116"
+	minecraft "com.mojang:minecraft:1.14"
+	mappings "net.fabricmc:yarn:1.14+build.7"
+	modCompile "net.fabricmc:fabric-loader:0.4.6+build.141"
 
 	//Fabric api
-	modCompile "net.fabricmc:fabric:0.2.6.121"
+	modCompile "net.fabricmc:fabric:0.2.7+build.127"
 
 	// mod menu
 	modCompile "io.github.prospector.modmenu:ModMenu:1.2.1-45"
