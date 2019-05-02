@@ -11,8 +11,8 @@
   "item.vanilla-hammers.tater_hammer": "Lil Tater Hammer",
 
   "text.autoconfig.vanilla-hammers.option.fullBlockHitbox": "Full Block hitbox",
-  "text.autoconfig.vanilla-hammers.option.enableExtraResources": "Extra Resource Hammers",
-  "text.autoconfig.vanilla-hammers.option.EnableTaterHammer": "Tater Hammer",
+  "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "Extra Vanilla Material Hammers",
+  "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "Tater Hammer",
   "text.autoconfig.vanilla-hammers.option.enableFull3x3": "Full 3x3 hitbox",
   "text.autoconfig.vanilla-hammers.category.default": "General",
   "text.autoconfig.vanilla-hammers.title": "Vanilla Hammers Config"
