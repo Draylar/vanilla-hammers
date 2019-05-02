@@ -8,6 +8,6 @@ public class VanillaHammersConfig implements ConfigData
 {
     public boolean enableExtraMaterials = true;
     public boolean enableTaterHammer = true;
-    public boolean enableFull3x3 = true;
-    public boolean fullBlockHitbox = true;
+    public boolean enableFull3x3 = false;
+    public boolean fullBlockHitbox = false;
 }

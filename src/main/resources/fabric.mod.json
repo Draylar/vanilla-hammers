@@ -16,6 +16,9 @@
   "entrypoints": {
     "main": [
       "com.github.draylar.vh.VanillaHammers"
+    ],
+    "modmenu": [
+      "com.github.draylar.vh.ModMenuIntegration"
     ]
   },
   "mixins": [
