@@ -1,10 +1,9 @@
 package com.github.draylar.vh.hammer;
 
-import com.github.draylar.vh.config.ConfigHolder;
+import com.github.draylar.vh.config.VanillaHammersConfig;
+import me.sargunvohra.mcmods.autoconfig1.AutoConfig;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ToolMaterial;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.resource.ResourceReloadHandler;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -20,7 +19,7 @@ public class HammerRegistry
         register(HammerMaterials.GOLD, 5, -2.5f, "golden");
         register(HammerMaterials.DIAMOND, 10, -3f, "diamond");
 
-        if(ConfigHolder.configInstance.enableExtraMaterials)
+        if(AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableExtraMaterials)
         {
             register(HammerMaterials.EMERALD, 11, -3f, "emerald");
             register(HammerMaterials.OBSIDIAN, 7, -3.5f, "obsidian");
@@ -29,7 +28,7 @@ public class HammerRegistry
         }
 
 
-        if(ConfigHolder.configInstance.enableTaterHammer)
+        if(AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableTaterHammer)
         {
             if (FabricLoader.getInstance().isModLoaded("lil-tater"))
             {

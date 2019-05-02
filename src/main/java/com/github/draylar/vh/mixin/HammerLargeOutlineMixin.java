@@ -1,21 +1,18 @@
 package com.github.draylar.vh.mixin;
 
+import com.github.draylar.vh.config.VanillaHammersConfig;
 import com.github.draylar.vh.hammer.HammerItem;
 import com.mojang.blaze3d.platform.GlStateManager;
-import net.minecraft.block.Block;
+import me.sargunvohra.mcmods.autoconfig1.AutoConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.WorldRenderer;
-import net.minecraft.entity.VerticalEntityPosition;
-import net.minecraft.util.BooleanBiFunction;
 import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import org.spongepowered.asm.mixin.Final;
@@ -74,9 +71,17 @@ public class HammerLargeOutlineMixin
                         {
                             for (int z = -1; z < 2; z++)
                             {
-                                if(client.world.getBlockState(blockPos_1.add(x, 0, z)) != Blocks.AIR.getDefaultState())
+                                if(client.world.getBlockState(blockPos_1.add(x, 0, z)) != Blocks.AIR.getDefaultState() || AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableFull3x3)
                                 {
-                                    shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(x, 0, z)).getOutlineShape(client.world, blockPos_1.add(x, 0, z)).offset(x, 0, z));
+                                    if(!AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().fullBlockHitbox)
+                                    {
+                                        shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(x, 0, z)).getOutlineShape(client.world, blockPos_1.add(x, 0, z)).offset(x, 0, z));
+                                    }
+
+                                    else
+                                    {
+                                        shape = VoxelShapes.union(shape, VoxelShapes.fullCube().offset(x, 0, z));
+                                    }
                                 }
                             }
                         }
@@ -110,9 +115,17 @@ public class HammerLargeOutlineMixin
                         {
                             for (int z = -1; z < 2; z++)
                             {
-                                if(client.world.getBlockState(blockPos_1.add(0, y, z)) != Blocks.AIR.getDefaultState())
+                                if(client.world.getBlockState(blockPos_1.add(0, y, z)) != Blocks.AIR.getDefaultState() || AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableFull3x3)
                                 {
-                                    shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(0, y, z)).getOutlineShape(client.world, blockPos_1.add(0, y, z)).offset(0, y, z));
+                                    if(!AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().fullBlockHitbox)
+                                    {
+                                        shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(0, y, z)).getOutlineShape(client.world, blockPos_1.add(0, y, z)).offset(0, y, z));
+                                    }
+
+                                    else
+                                    {
+                                        shape = VoxelShapes.union(shape, VoxelShapes.fullCube().offset(0, y, z));
+                                    }
                                 }
                             }
                         }
@@ -146,9 +159,17 @@ public class HammerLargeOutlineMixin
                         {
                             for (int y = -1; y < 2; y++)
                             {
-                                if(client.world.getBlockState(blockPos_1.add(x, y, 0)) != Blocks.AIR.getDefaultState())
+                                if(client.world.getBlockState(blockPos_1.add(x, y, 0)) != Blocks.AIR.getDefaultState() || AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableFull3x3)
                                 {
-                                    shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(x, y, 0)).getOutlineShape(client.world, blockPos_1.add(x, y, 0)).offset(x, y, 0));
+                                    if(!AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().fullBlockHitbox)
+                                    {
+                                        shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(x, y, 0)).getOutlineShape(client.world, blockPos_1.add(x, y, 0)).offset(x, y, 0));
+                                    }
+
+                                    else
+                                    {
+                                        shape = VoxelShapes.union(shape, VoxelShapes.fullCube().offset(x, y, 0));
+                                    }
                                 }
                             }
                         }
