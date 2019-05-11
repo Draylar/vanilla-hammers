@@ -41,6 +41,12 @@ public enum HammerMaterials implements ToolMaterial
     QUARTZ(2, 1028 * VanillaHammers.DURABILITY_MODIFIER, 8.0F / 3.5f, 0.0f, 10, () -> {
         return Ingredient.ofItems(Items.QUARTZ);
     }),
+    FIERY(3, 750 * VanillaHammers.DURABILITY_MODIFIER, 7.0F / 3.5f, 0f, 15, () -> {
+        return Ingredient.ofItems(Items.MAGMA_BLOCK);
+    }),
+    PRISMARINE(3, 750 * VanillaHammers.DURABILITY_MODIFIER, 7.0F / 3.5F, 0f, 20, () -> {
+        return Ingredient.ofItems(Items.PRISMARINE_SHARD);
+    }),
     POTATO(1, 500 * VanillaHammers.DURABILITY_MODIFIER, 4.0F / 3.5f, 0.0f, 100, () -> {
         return Ingredient.ofItems(Registry.ITEM.get(new Identifier("lil-tater", "lil_tater")));
     });
