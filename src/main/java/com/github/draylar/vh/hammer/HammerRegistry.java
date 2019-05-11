@@ -25,6 +25,8 @@ public class HammerRegistry
             register(HammerMaterials.OBSIDIAN, 7, -3.5f, "obsidian");
             register(HammerMaterials.QUARTZ, 5, -2f, "lapis");
             register(HammerMaterials.LAPIS, 3, -2.5f, "quartz");
+            register(HammerMaterials.FIERY, 6, -2.3f, "fiery");
+            register(HammerMaterials.PRISMARINE, 6, -2.3f, "prismarine");
         }
 
 
