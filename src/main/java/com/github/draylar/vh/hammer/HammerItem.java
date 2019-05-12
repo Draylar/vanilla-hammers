@@ -1,15 +1,16 @@
 package com.github.draylar.vh.hammer;
 
 import com.google.common.collect.ImmutableSet;
+import net.fabricmc.fabric.impl.registry.FuelRegistryImpl;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.*;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.recipe.cooking.SmeltingRecipe;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
@@ -18,6 +19,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RayTraceContext;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class HammerItem extends PickaxeItem
@@ -33,9 +36,8 @@ public class HammerItem extends PickaxeItem
     @Override
     public boolean beforeBlockBreak(BlockState state, World world, BlockPos blockPos, PlayerEntity player)
     {
-        if(world.isClient) return true;
-
-        if(!EFFECTIVE_BLOCKS.contains(state.getBlock()) && !EFFECTIVE_MATERIALS.contains(state.getMaterial())) return true;
+        if (!EFFECTIVE_BLOCKS.contains(state.getBlock()) && !EFFECTIVE_MATERIALS.contains(state.getMaterial()))
+            return true;
 
         Vec3d vec3d_1 = player.getCameraPosVec(1);
         Vec3d vec3d_2 = player.getRotationVec(1);
@@ -44,7 +46,7 @@ public class HammerItem extends PickaxeItem
 
         // HitResult result = player.rayTrace(5, 1, true);
 
-        if(result.getType() == HitResult.Type.BLOCK)
+        if (result.getType() == HitResult.Type.BLOCK)
         {
             Direction.Axis axis = result.getSide().getAxis();
 
@@ -62,9 +64,7 @@ public class HammerItem extends PickaxeItem
                 attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.SOUTH), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.WEST), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.NORTH), player, strength);
-            }
-
-            else if (axis == Direction.Axis.Z)
+            } else if (axis == Direction.Axis.Z)
             {
                 attemptBreakBlock(world, blockPos.offset(Direction.WEST), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.EAST), player, strength);
@@ -75,9 +75,7 @@ public class HammerItem extends PickaxeItem
                 attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.UP), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.DOWN), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.DOWN), player, strength);
-            }
-
-            else if (axis == Direction.Axis.X)
+            } else if (axis == Direction.Axis.X)
             {
                 attemptBreakBlock(world, blockPos.offset(Direction.NORTH), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.SOUTH), player, strength);
@@ -96,14 +94,47 @@ public class HammerItem extends PickaxeItem
 
     public void attemptBreakBlock(World world, BlockPos pos, PlayerEntity playerEntity, float originStrength)
     {
-        if(!world.isClient)
+        if (EFFECTIVE_BLOCKS.contains(world.getBlockState(pos).getBlock()) || EFFECTIVE_MATERIALS.contains(world.getBlockState(pos).getMaterial()))
         {
-            if (EFFECTIVE_BLOCKS.contains(world.getBlockState(pos).getBlock()) || EFFECTIVE_MATERIALS.contains(world.getBlockState(pos).getMaterial()))
+            float hardness = world.getBlockState(pos).getBlock().getHardness(null, null, null);
+            if (hardness <= originStrength * 2 && hardness > 0)
             {
-                float hardness = world.getBlockState(pos).getBlock().getHardness(null, null, null);
-                if(hardness <= originStrength * 2 && hardness > 0)
+                if (this.isEffectiveOn(world.getBlockState(pos)))
                 {
-                    if(this.isEffectiveOn(world.getBlockState(pos)))
+                    HammerItem hammerItem = (HammerItem) playerEntity.inventory.getMainHandStack().getItem();
+
+                    // fire break
+                    if(hammerItem.getTranslationKey().contains("fiery"))
+                    {
+                        BlockState state = world.getBlockState(pos);
+                        world.setBlockState(pos, Blocks.AIR.getDefaultState());
+
+                        if (!playerEntity.isCreative())
+                        {
+                            Block.dropStacks(state, world, pos, null, playerEntity, playerEntity.inventory.getMainHandStack());
+                            playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
+                        }
+
+                        if(world.isClient) world.addParticle(ParticleTypes.FLAME, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 0, 0, 0);
+                    }
+
+                    else if (hammerItem.getTranslationKey().contains("prismarine"))
+                    {
+                        BlockState state = world.getBlockState(pos);
+                        world.setBlockState(pos, Blocks.AIR.getDefaultState());
+
+                        if (!playerEntity.isCreative())
+                        {
+                            Block.dropStacks(state, world, pos, null, playerEntity, playerEntity.inventory.getMainHandStack());
+                            playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
+                        }
+
+                        if(world.isClient) world.addParticle(ParticleTypes.DRIPPING_WATER, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 0, 0, 0);
+
+                    }
+
+                    // normal break
+                    else
                     {
                         BlockState state = world.getBlockState(pos);
                         world.breakBlock(pos, false);
@@ -119,3 +150,4 @@ public class HammerItem extends PickaxeItem
         }
     }
 }
+
