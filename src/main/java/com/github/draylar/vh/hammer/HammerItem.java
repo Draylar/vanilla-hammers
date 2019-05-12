@@ -7,8 +7,13 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.BasicInventory;
 import net.minecraft.item.*;
+import net.minecraft.particle.ParticleParameters;
+import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.recipe.Recipe;
+import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.cooking.SmeltingRecipe;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.BlockHitResult;
@@ -102,49 +107,30 @@ public class HammerItem extends PickaxeItem
                 if (this.isEffectiveOn(world.getBlockState(pos)))
                 {
                     HammerItem hammerItem = (HammerItem) playerEntity.inventory.getMainHandStack().getItem();
+                    ParticleType type = null;
 
-                    // fire break
-                    if(hammerItem.getTranslationKey().contains("fiery"))
+                    // special item particle type
+                    if (hammerItem.getTranslationKey().contains("fiery")) type = ParticleTypes.FLAME;
+                    else if (hammerItem.getTranslationKey().contains("prismarine")) type = ParticleTypes.DRIPPING_WATER;
+
+                    BlockState state = world.getBlockState(pos);
+
+                    // changes how block particles appear
+                    if (type == null) world.breakBlock(pos, false);
+                    else world.setBlockState(pos, Blocks.AIR.getDefaultState());
+
+                    if (!playerEntity.isCreative())
                     {
-                        BlockState state = world.getBlockState(pos);
-                        world.setBlockState(pos, Blocks.AIR.getDefaultState());
-
-                        if (!playerEntity.isCreative())
-                        {
-                            Block.dropStacks(state, world, pos, null, playerEntity, playerEntity.inventory.getMainHandStack());
-                            playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
-                        }
-
-                        if(world.isClient) world.addParticle(ParticleTypes.FLAME, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 0, 0, 0);
+                        Block.dropStacks(state, world, pos, null, playerEntity, playerEntity.inventory.getMainHandStack());
+                        playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
                     }
 
-                    else if (hammerItem.getTranslationKey().contains("prismarine"))
+                    // spawn custom particles
+                    if (type != null && world.isClient)
                     {
-                        BlockState state = world.getBlockState(pos);
-                        world.setBlockState(pos, Blocks.AIR.getDefaultState());
-
-                        if (!playerEntity.isCreative())
-                        {
-                            Block.dropStacks(state, world, pos, null, playerEntity, playerEntity.inventory.getMainHandStack());
-                            playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
-                        }
-
-                        if(world.isClient) world.addParticle(ParticleTypes.DRIPPING_WATER, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 0, 0, 0);
-
+                        world.addParticle((ParticleParameters) type, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 0, 0, 0);
                     }
 
-                    // normal break
-                    else
-                    {
-                        BlockState state = world.getBlockState(pos);
-                        world.breakBlock(pos, false);
-
-                        if (!playerEntity.isCreative())
-                        {
-                            Block.dropStacks(state, world, pos, null, playerEntity, playerEntity.inventory.getMainHandStack());
-                            playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
-                        }
-                    }
                 }
             }
         }
