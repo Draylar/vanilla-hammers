@@ -9,6 +9,8 @@
   "item.vanilla-hammers.lapis_hammer": "Lapis Lazuli Hammer",
   "item.vanilla-hammers.quartz_hammer": "Quartz Hammer",
   "item.vanilla-hammers.tater_hammer": "Lil Tater Hammer",
+  "item.vanilla-hammers.fiery_hammer": "Fiery Hammer",
+  "item.vanilla-hammers.prismarine_hammer": "Prismarine Hammer",
 
   "text.autoconfig.vanilla-hammers.option.fullBlockHitbox": "Full Block hitbox",
   "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "Extra Vanilla Material Hammers",
