@@ -6,10 +6,10 @@
     " s "
   ],
   "key": {
-    "d": {
+    "D": {
       "item": "minecraft:emerald_block"
     },
-    "D": {
+    "d": {
       "item": "minecraft:emerald"
     },
     "s": {

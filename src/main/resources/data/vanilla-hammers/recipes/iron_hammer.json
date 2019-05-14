@@ -6,10 +6,10 @@
     " s "
   ],
   "key": {
-    "d": {
+    "D": {
       "item": "minecraft:iron_block"
     },
-    "D": {
+    "d": {
       "item": "minecraft:iron_ingot"
     },
     "s": {

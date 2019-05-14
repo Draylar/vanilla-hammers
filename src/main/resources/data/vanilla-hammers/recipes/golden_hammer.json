@@ -6,10 +6,10 @@
     " s "
   ],
   "key": {
-    "d": {
+    "D": {
       "item": "minecraft:gold_block"
     },
-    "D": {
+    "d": {
       "item": "minecraft:gold_ingot"
     },
     "s": {

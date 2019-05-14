@@ -6,10 +6,10 @@
     " s "
   ],
   "key": {
-    "d": {
+    "D": {
       "item": "minecraft:stone"
     },
-    "D": {
+    "d": {
       "item": "minecraft:cobblestone"
     },
     "s": {
