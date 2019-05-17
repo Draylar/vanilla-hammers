@@ -1,18 +1,24 @@
-# Fabric Example Mod
+# Vanilla Hammers
 
-Draylar's fork of the fabric-example-mod. Changes package structure to my usual one.
+Vanilla Hammers is a 1.14 Fabric mod that adds 13 special hammers to the game, all designed around vanilla materials.
 
-## Setup
+## Installation
 
-1. Edit build.gradle and mod.json to suit your needs.
-    * The "mixins" object can be removed from mod.json if you do not need to use mixins.
-    * Please replace all occurences of "modid" with your own mod ID - sometimes, a different string may also suffice.
-2. Run the following command:
+1. Install the Fabric Launcher from https://fabricmc.net/use/
+2. Install the Fabric API jar as a mod from https://minecraft.curseforge.com/projects/fabric
+3. Install the latest version of Vanilla Hammers from https://minecraft.curseforge.com/projects/vanilla-hammers
 
-```
-./gradlew idea
-```
+## Wiki
+
+For more information about the mod, check out the wiki:
+  - Wiki Home
+   - Item Recipes
+   - Item Stats
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+Vanilla Hammers is licensed under GPLv3. This means you can:
+  - include it in a pack
+  - distribute it where appropriate
+  - re-publish the mod if I go inactive
+  - modify the source code
