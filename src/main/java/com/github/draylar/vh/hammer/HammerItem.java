@@ -5,14 +5,15 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
+import net.minecraft.client.network.packet.GuiSlotUpdateS2CPacket;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.*;
 import net.minecraft.particle.ParticleParameters;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
@@ -21,6 +22,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RayTraceContext;
 import net.minecraft.world.World;
 
+import java.util.List;
 import java.util.Set;
 
 public class HammerItem extends PickaxeItem
@@ -53,6 +55,8 @@ public class HammerItem extends PickaxeItem
             // we can pass null because the method doesn't use the variables :)
             float strength = state.getBlock().getHardness(null, null, null);
 
+            attemptBreakBlock(world, blockPos, player, strength);
+
             if (axis == Direction.Axis.Y)
             {
                 attemptBreakBlock(world, blockPos.offset(Direction.NORTH), player, strength);
@@ -64,7 +68,9 @@ public class HammerItem extends PickaxeItem
                 attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.SOUTH), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.WEST), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.NORTH), player, strength);
-            } else if (axis == Direction.Axis.Z)
+            }
+
+            else if (axis == Direction.Axis.Z)
             {
                 attemptBreakBlock(world, blockPos.offset(Direction.WEST), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.EAST), player, strength);
@@ -75,7 +81,9 @@ public class HammerItem extends PickaxeItem
                 attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.UP), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.DOWN), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.DOWN), player, strength);
-            } else if (axis == Direction.Axis.X)
+            }
+
+            else if (axis == Direction.Axis.X)
             {
                 attemptBreakBlock(world, blockPos.offset(Direction.NORTH), player, strength);
                 attemptBreakBlock(world, blockPos.offset(Direction.SOUTH), player, strength);
@@ -89,10 +97,10 @@ public class HammerItem extends PickaxeItem
             }
         }
 
-        return super.beforeBlockBreak(state, world, blockPos, player);
+        return false;
     }
 
-    public void attemptBreakBlock(World world, BlockPos pos, PlayerEntity playerEntity, float originStrength)
+    private void attemptBreakBlock(World world, BlockPos pos, PlayerEntity playerEntity, float originStrength)
     {
         if (EFFECTIVE_BLOCKS.contains(world.getBlockState(pos).getBlock()) || EFFECTIVE_MATERIALS.contains(world.getBlockState(pos).getMaterial()))
         {
@@ -114,9 +122,9 @@ public class HammerItem extends PickaxeItem
                     if (type == null) world.breakBlock(pos, false);
                     else world.setBlockState(pos, Blocks.AIR.getDefaultState());
 
-                    if (!playerEntity.isCreative())
+                    if (!playerEntity.isCreative() && !world.isClient)
                     {
-                        Block.dropStacks(state, world, pos, null, playerEntity, playerEntity.inventory.getMainHandStack());
+                        handleBlockDrops(world, state, pos, playerEntity);
                         playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
                     }
 
@@ -129,6 +137,57 @@ public class HammerItem extends PickaxeItem
                 }
             }
         }
+    }
+
+    private void handleBlockDrops(World world, BlockState state, BlockPos pos, PlayerEntity player)
+    {
+        ItemStack stack = player.getMainHandStack();
+
+        if(stack.getTranslationKey().contains("ender"))
+        {
+            List<ItemStack> list = Block.getDroppedStacks(state, (ServerWorld) world, pos, null);
+            list.forEach(e -> offerOrDrop(player, world, e));
+        }
+
+        else
+        {
+            Block.dropStacks(state, world, pos, null, player, player.inventory.getMainHandStack());
+        }
+    }
+
+    private void offerOrDrop(PlayerEntity player, World world, ItemStack stack)
+    {
+        if (!world.isClient)
+        {
+            while (!stack.isEmpty())
+            {
+                int occupiedSlotWithRoom = player.inventory.getOccupiedSlotWithRoomForStack(stack);
+
+                if (occupiedSlotWithRoom == -1)
+                {
+                    occupiedSlotWithRoom = player.inventory.getEmptySlot();
+                }
+
+                if (occupiedSlotWithRoom == -1)
+                {
+                    spawnItemEntity(world, player, stack);
+                    break;
+                }
+
+                int remainingStackAmount = stack.getMaxAmount() - player.inventory.getInvStack(occupiedSlotWithRoom).getAmount();
+
+                if (player.inventory.insertStack(occupiedSlotWithRoom, stack.split(remainingStackAmount)))
+                {
+                    ((ServerPlayerEntity) player).networkHandler.sendPacket(new GuiSlotUpdateS2CPacket(-2, occupiedSlotWithRoom, player.inventory.getInvStack(occupiedSlotWithRoom)));
+                }
+            }
+        }
+    }
+
+    private void spawnItemEntity(World world, PlayerEntity player, ItemStack stack)
+    {
+        ItemEntity entity = new ItemEntity(world, player.getPos().x, player.getPos().getY(), player.getPos().getZ(), stack);
+        world.spawnEntity(entity);
     }
 }
 
