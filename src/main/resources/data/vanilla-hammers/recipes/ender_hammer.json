@@ -7,13 +7,13 @@
   ],
   "key": {
     "D": {
-      "item": "minecraft:slime_block"
+      "item": "minecraft:end_stone_bricks"
     },
     "d": {
-      "item": "minecraft:slime_ball"
+      "item": "minecraft:dragon_head"
     },
     "s": {
-      "item": "minecraft:stick"
+      "item": "minecraft:obsidian"
     }
   },
   "result": {

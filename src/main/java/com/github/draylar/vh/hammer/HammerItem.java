@@ -143,16 +143,16 @@ public class HammerItem extends PickaxeItem
     {
         ItemStack stack = player.getMainHandStack();
 
-        if(stack.getTranslationKey().contains("ender"))
-        {
-            List<ItemStack> list = Block.getDroppedStacks(state, (ServerWorld) world, pos, null);
-            list.forEach(e -> offerOrDrop(player, world, e));
-        }
+//        if(stack.getTranslationKey().contains("ender"))
+//        {
+//            List<ItemStack> list = Block.getDroppedStacks(state, (ServerWorld) world, pos, null);
+//            list.forEach(e -> offerOrDrop(player, world, e));
+//        }
 
-        else
-        {
+//        else
+//        {
             Block.dropStacks(state, world, pos, null, player, player.inventory.getMainHandStack());
-        }
+//        }
     }
 
     private void offerOrDrop(PlayerEntity player, World world, ItemStack stack)
