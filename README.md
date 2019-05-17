@@ -11,9 +11,7 @@ Vanilla Hammers is a 1.14 Fabric mod that adds 13 special hammers to the game, a
 ## Wiki
 
 For more information about the mod, check out the wiki:
-  - Wiki Home
-   - Item Recipes
-   - Item Stats
+  - [Item Stats](https://github.com/Draylar/vanilla-hammers/wiki/Stats)
 
 ## License
 
