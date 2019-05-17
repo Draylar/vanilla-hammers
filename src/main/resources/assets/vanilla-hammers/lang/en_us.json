@@ -11,6 +11,8 @@
   "item.vanilla-hammers.tater_hammer": "Lil Tater Hammer",
   "item.vanilla-hammers.fiery_hammer": "Fiery Hammer",
   "item.vanilla-hammers.prismarine_hammer": "Prismarine Hammer",
+  "item.vanilla-hammers.slime_hammer": "Slime Hammer",
+  "item.vanilla-hammers.ender_hammer": "Ender Hammer",
 
   "text.autoconfig.vanilla-hammers.option.fullBlockHitbox": "Full Block hitbox",
   "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "Extra Vanilla Material Hammers",

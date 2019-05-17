@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DdD",
+    " s ",
+    " s "
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:slime_block"
+    },
+    "d": {
+      "item": "minecraft:slime_ball"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "vanilla-hammers:slime_hammer"
+  }
+}
