@@ -38,6 +38,8 @@ public class HammerItem extends PickaxeItem
     @Override
     public boolean beforeBlockBreak(BlockState state, World world, BlockPos blockPos, PlayerEntity player)
     {
+        int totalBroken = 0;
+        
         if (!EFFECTIVE_BLOCKS.contains(state.getBlock()) && !EFFECTIVE_MATERIALS.contains(state.getMaterial()))
             return true;
 
@@ -59,48 +61,51 @@ public class HammerItem extends PickaxeItem
 
             if (axis == Direction.Axis.Y)
             {
-                attemptBreakBlock(world, blockPos.offset(Direction.NORTH), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.EAST), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.WEST), player, strength);
+                if(attemptBreakBlock(world, blockPos.offset(Direction.NORTH), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.EAST), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.SOUTH), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.WEST), player, strength)) totalBroken++;
 
-                attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.EAST), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.SOUTH), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.WEST), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.NORTH), player, strength);
+                if(attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.EAST), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.SOUTH), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.WEST), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.NORTH), player, strength)) totalBroken++;
             }
 
             else if (axis == Direction.Axis.Z)
             {
-                attemptBreakBlock(world, blockPos.offset(Direction.WEST), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.EAST), player, strength);
+                if(attemptBreakBlock(world, blockPos.offset(Direction.WEST), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.EAST), player, strength)) totalBroken++;
 
-                attemptBreakBlock(world, blockPos.offset(Direction.UP), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.DOWN), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.UP), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.UP), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.DOWN), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.DOWN), player, strength);
+                if(attemptBreakBlock(world, blockPos.offset(Direction.UP), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.DOWN), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.UP), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.UP), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.WEST).offset(Direction.DOWN), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.EAST).offset(Direction.DOWN), player, strength)) totalBroken++;
             }
 
             else if (axis == Direction.Axis.X)
             {
-                attemptBreakBlock(world, blockPos.offset(Direction.NORTH), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH), player, strength);
+                if(attemptBreakBlock(world, blockPos.offset(Direction.NORTH), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.SOUTH), player, strength)) totalBroken++;
 
-                attemptBreakBlock(world, blockPos.offset(Direction.UP), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.DOWN), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.UP), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.UP), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.DOWN), player, strength);
-                attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.DOWN), player, strength);
+                if(attemptBreakBlock(world, blockPos.offset(Direction.UP), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.DOWN), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.UP), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.UP), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.NORTH).offset(Direction.DOWN), player, strength)) totalBroken++;
+                if(attemptBreakBlock(world, blockPos.offset(Direction.SOUTH).offset(Direction.DOWN), player, strength)) totalBroken++;
             }
         }
+
+
+        player.inventory.getMainHandStack().applyDamage(totalBroken, player, t -> {});
 
         return false;
     }
 
-    private void attemptBreakBlock(World world, BlockPos pos, PlayerEntity playerEntity, float originStrength)
+    private boolean attemptBreakBlock(World world, BlockPos pos, PlayerEntity playerEntity, float originStrength)
     {
         if (EFFECTIVE_BLOCKS.contains(world.getBlockState(pos).getBlock()) || EFFECTIVE_MATERIALS.contains(world.getBlockState(pos).getMaterial()))
         {
@@ -121,11 +126,11 @@ public class HammerItem extends PickaxeItem
                     // changes how block particles appear
                     if (type == null) world.breakBlock(pos, false);
                     else world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                    
 
                     if (!playerEntity.isCreative() && !world.isClient)
                     {
                         handleBlockDrops(world, state, pos, playerEntity);
-                        playerEntity.inventory.getMainHandStack().applyDamage(1, world.random, null);
                     }
 
                     // spawn custom particles
@@ -133,10 +138,14 @@ public class HammerItem extends PickaxeItem
                     {
                         world.addParticle((ParticleParameters) type, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 0, 0, 0);
                     }
+                    
+                    return true;
 
                 }
             }
         }
+        
+        return false;
     }
 
     private void handleBlockDrops(World world, BlockState state, BlockPos pos, PlayerEntity player)
