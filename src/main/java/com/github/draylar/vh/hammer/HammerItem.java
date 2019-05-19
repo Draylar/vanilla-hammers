@@ -9,7 +9,7 @@ import net.minecraft.client.network.packet.GuiSlotUpdateS2CPacket;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
-import net.minecraft.particle.ParticleParameters;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -136,7 +136,7 @@ public class HammerItem extends PickaxeItem
                     // spawn custom particles
                     if (type != null && world.isClient)
                     {
-                        world.addParticle((ParticleParameters) type, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 0, 0, 0);
+                        world.addParticle((ParticleEffect) type, pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 0, 0, 0);
                     }
                     
                     return true;
