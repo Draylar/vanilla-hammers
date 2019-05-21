@@ -10,4 +10,7 @@ public class VanillaHammersConfig implements ConfigData
     public boolean enableTaterHammer = true;
     public boolean enableFull3x3 = false;
     public boolean fullBlockHitbox = false;
+    public boolean alwaysShowSingleBlockHitbox = false;
+    public boolean showSingleblockWhenSneaking = true;
+    public boolean breakSingleBlockWhenSneaking = true;
 }
