@@ -1,5 +1,7 @@
 package com.github.draylar.vh.mixin;
 
+import com.github.draylar.vh.config.VanillaHammersConfig;
+import me.sargunvohra.mcmods.autoconfig1.AutoConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.WorldRenderer;
@@ -19,9 +21,19 @@ public class CancelHammerOutlineMixin
     @Inject(at = @At("HEAD"), method = "drawHighlightedBlockOutline", cancellable = true)
     public void draw(Camera camera_1, HitResult hitResult_1, int int_1, CallbackInfo ci)
     {
-        if(this.client.player.inventory.getMainHandStack().getItem().getTranslationKey().contains("hammer"))
+        VanillaHammersConfig config = AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig();
+
+        if(this.client.player.inventory.getMainHandStack().getItem().getTranslationKey().contains("hammer") && !config.alwaysShowSingleBlockHitbox)
         {
-            ci.cancel();
+            if(config.showSingleBlockWhenSneaking && client.player.isSneaking())
+            {
+
+            }
+
+            else
+            {
+                ci.cancel();
+            }
         }
     }
 }

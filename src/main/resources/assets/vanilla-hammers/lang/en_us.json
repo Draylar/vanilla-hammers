@@ -14,10 +14,13 @@
   "item.vanilla-hammers.slime_hammer": "Slime Hammer",
   "item.vanilla-hammers.ender_hammer": "Ender Hammer",
 
-  "text.autoconfig.vanilla-hammers.option.fullBlockHitbox": "Full Block hitbox",
+  "text.autoconfig.vanilla-hammers.option.fullBlockHitbox": "Full Block Hitbox",
   "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "Extra Vanilla Material Hammers",
   "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "Tater Hammer",
-  "text.autoconfig.vanilla-hammers.option.enableFull3x3": "Full 3x3 hitbox",
+  "text.autoconfig.vanilla-hammers.option.enableFull3x3": "Full 3x3 Hitbox",
+  "text.autoconfig.vanilla-hammers.option.alwaysShowSingleBlockHitbox": "Always Show Single Hitbox",
+  "text.autoconfig.vanilla-hammers.option.showSingleBlockWhenSneaking": "Single Hitbox When Sneaking",
+  "text.autoconfig.vanilla-hammers.option.breakSingleBlockWhenSneaking": "Single Break When Sneaking",
   "text.autoconfig.vanilla-hammers.category.default": "General",
   "text.autoconfig.vanilla-hammers.title": "Vanilla Hammers Config"
 }

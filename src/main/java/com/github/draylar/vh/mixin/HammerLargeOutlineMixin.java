@@ -36,151 +36,146 @@ public class HammerLargeOutlineMixin
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;drawHighlightedBlockOutline(Lnet/minecraft/client/render/Camera;Lnet/minecraft/util/hit/HitResult;I)V"), method = "renderCenter")
     public void renderCenter(float float_1, long long_1, CallbackInfo ci)
     {
-        if (this.client.player.inventory.getMainHandStack().getItem() instanceof HammerItem)
+        VanillaHammersConfig config = AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig();
+
+        if (this.client.player.inventory.getMainHandStack().getItem() instanceof HammerItem && !config.alwaysShowSingleBlockHitbox)
         {
-            if (client.hitResult instanceof BlockHitResult)
+            if (!config.showSingleBlockWhenSneaking || !client.player.isSneaking())
             {
-                BlockHitResult hitResult = (BlockHitResult) client.hitResult;
-                BlockPos blockPos_1 = hitResult.getBlockPos();
-                BlockState blockState_1 = client.world.getBlockState(blockPos_1);
-
-                if (!blockState_1.isAir() && client.world.getWorldBorder().contains(blockPos_1))
+                if (client.hitResult instanceof BlockHitResult)
                 {
-                    if (hitResult.getSide().getAxis() == Direction.Axis.Y)
+                    BlockHitResult hitResult = (BlockHitResult) client.hitResult;
+                    BlockPos blockPos_1 = hitResult.getBlockPos();
+                    BlockState blockState_1 = client.world.getBlockState(blockPos_1);
+
+                    if (!blockState_1.isAir() && client.world.getWorldBorder().contains(blockPos_1))
                     {
-                        GlStateManager.enableBlend();
-                        GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-                        GlStateManager.lineWidth(Math.max(2.5F, (float) this.client.window.getFramebufferWidth() / 1920.0F * 2.5F));
-                        GlStateManager.disableTexture();
-                        GlStateManager.depthMask(false);
-                        GlStateManager.matrixMode(5889);
-                        GlStateManager.pushMatrix();
-                        GlStateManager.scalef(1.0F, 1.0F, 0.999F);
-                        double double_1 = camera.getPos().x;
-                        double double_2 = camera.getPos().y;
-                        double double_3 = camera.getPos().z;
-
-                        // -x is west
-                        // x is east
-                        // -z is north
-                        // z is south
-
-                        VoxelShape shape = VoxelShapes.empty();
-
-                        for (int x = -1; x < 2; x++)
+                        if (hitResult.getSide().getAxis() == Direction.Axis.Y)
                         {
-                            for (int z = -1; z < 2; z++)
-                            {
-                                if(client.world.getBlockState(blockPos_1.add(x, 0, z)) != Blocks.AIR.getDefaultState() || AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableFull3x3)
-                                {
-                                    if(!AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().fullBlockHitbox)
-                                    {
-                                        shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(x, 0, z)).getOutlineShape(client.world, blockPos_1.add(x, 0, z)).offset(x, 0, z));
-                                    }
+                            GlStateManager.enableBlend();
+                            GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                            GlStateManager.lineWidth(Math.max(2.5F, (float) this.client.window.getFramebufferWidth() / 1920.0F * 2.5F));
+                            GlStateManager.disableTexture();
+                            GlStateManager.depthMask(false);
+                            GlStateManager.matrixMode(5889);
+                            GlStateManager.pushMatrix();
+                            GlStateManager.scalef(1.0F, 1.0F, 0.999F);
+                            double double_1 = camera.getPos().x;
+                            double double_2 = camera.getPos().y;
+                            double double_3 = camera.getPos().z;
 
-                                    else
+                            // -x is west
+                            // x is east
+                            // -z is north
+                            // z is south
+
+                            VoxelShape shape = VoxelShapes.empty();
+
+                            for (int x = -1; x < 2; x++)
+                            {
+                                for (int z = -1; z < 2; z++)
+                                {
+                                    if (client.world.getBlockState(blockPos_1.add(x, 0, z)) != Blocks.AIR.getDefaultState() || AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableFull3x3)
                                     {
-                                        shape = VoxelShapes.union(shape, VoxelShapes.fullCube().offset(x, 0, z));
+                                        if (!AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().fullBlockHitbox)
+                                        {
+                                            shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(x, 0, z)).getOutlineShape(client.world, blockPos_1.add(x, 0, z)).offset(x, 0, z));
+                                        } else
+                                        {
+                                            shape = VoxelShapes.union(shape, VoxelShapes.fullCube().offset(x, 0, z));
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                        WorldRenderer.drawShapeOutline(shape, (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
+                            WorldRenderer.drawShapeOutline(shape, (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
 
-                        GlStateManager.popMatrix();
-                        GlStateManager.matrixMode(5888);
-                        GlStateManager.depthMask(true);
-                        GlStateManager.enableTexture();
-                        GlStateManager.disableBlend();
-                    }
-
-                    else if (hitResult.getSide().getAxis() == Direction.Axis.X)
-                    {
-                        GlStateManager.enableBlend();
-                        GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-                        GlStateManager.lineWidth(Math.max(2.5F, (float) this.client.window.getFramebufferWidth() / 1920.0F * 2.5F));
-                        GlStateManager.disableTexture();
-                        GlStateManager.depthMask(false);
-                        GlStateManager.matrixMode(5889);
-                        GlStateManager.pushMatrix();
-                        GlStateManager.scalef(1.0F, 1.0F, 0.999F);
-                        double double_1 = camera.getPos().x;
-                        double double_2 = camera.getPos().y;
-                        double double_3 = camera.getPos().z;
-
-                        VoxelShape shape = VoxelShapes.empty();
-
-                        for (int y = -1; y < 2; y++)
+                            GlStateManager.popMatrix();
+                            GlStateManager.matrixMode(5888);
+                            GlStateManager.depthMask(true);
+                            GlStateManager.enableTexture();
+                            GlStateManager.disableBlend();
+                        } else if (hitResult.getSide().getAxis() == Direction.Axis.X)
                         {
-                            for (int z = -1; z < 2; z++)
-                            {
-                                if(client.world.getBlockState(blockPos_1.add(0, y, z)) != Blocks.AIR.getDefaultState() || AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableFull3x3)
-                                {
-                                    if(!AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().fullBlockHitbox)
-                                    {
-                                        shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(0, y, z)).getOutlineShape(client.world, blockPos_1.add(0, y, z)).offset(0, y, z));
-                                    }
+                            GlStateManager.enableBlend();
+                            GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                            GlStateManager.lineWidth(Math.max(2.5F, (float) this.client.window.getFramebufferWidth() / 1920.0F * 2.5F));
+                            GlStateManager.disableTexture();
+                            GlStateManager.depthMask(false);
+                            GlStateManager.matrixMode(5889);
+                            GlStateManager.pushMatrix();
+                            GlStateManager.scalef(1.0F, 1.0F, 0.999F);
+                            double double_1 = camera.getPos().x;
+                            double double_2 = camera.getPos().y;
+                            double double_3 = camera.getPos().z;
 
-                                    else
-                                    {
-                                        shape = VoxelShapes.union(shape, VoxelShapes.fullCube().offset(0, y, z));
-                                    }
-                                }
-                            }
-                        }
+                            VoxelShape shape = VoxelShapes.empty();
 
-                        WorldRenderer.drawShapeOutline(shape, (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
-
-                        GlStateManager.popMatrix();
-                        GlStateManager.matrixMode(5888);
-                        GlStateManager.depthMask(true);
-                        GlStateManager.enableTexture();
-                        GlStateManager.disableBlend();
-                    }
-
-                    else if (hitResult.getSide().getAxis() == Direction.Axis.Z)
-                    {
-                        GlStateManager.enableBlend();
-                        GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-                        GlStateManager.lineWidth(Math.max(2.5F, (float) this.client.window.getFramebufferWidth() / 1920.0F * 2.5F));
-                        GlStateManager.disableTexture();
-                        GlStateManager.depthMask(false);
-                        GlStateManager.matrixMode(5889);
-                        GlStateManager.pushMatrix();
-                        GlStateManager.scalef(1.0F, 1.0F, 0.999F);
-                        double double_1 = camera.getPos().x;
-                        double double_2 = camera.getPos().y;
-                        double double_3 = camera.getPos().z;
-
-                        VoxelShape shape = VoxelShapes.empty();
-
-                        for (int x = -1; x < 2; x++)
-                        {
                             for (int y = -1; y < 2; y++)
                             {
-                                if(client.world.getBlockState(blockPos_1.add(x, y, 0)) != Blocks.AIR.getDefaultState() || AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableFull3x3)
+                                for (int z = -1; z < 2; z++)
                                 {
-                                    if(!AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().fullBlockHitbox)
+                                    if (client.world.getBlockState(blockPos_1.add(0, y, z)) != Blocks.AIR.getDefaultState() || AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableFull3x3)
                                     {
-                                        shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(x, y, 0)).getOutlineShape(client.world, blockPos_1.add(x, y, 0)).offset(x, y, 0));
-                                    }
-
-                                    else
-                                    {
-                                        shape = VoxelShapes.union(shape, VoxelShapes.fullCube().offset(x, y, 0));
+                                        if (!AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().fullBlockHitbox)
+                                        {
+                                            shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(0, y, z)).getOutlineShape(client.world, blockPos_1.add(0, y, z)).offset(0, y, z));
+                                        } else
+                                        {
+                                            shape = VoxelShapes.union(shape, VoxelShapes.fullCube().offset(0, y, z));
+                                        }
                                     }
                                 }
                             }
+
+                            WorldRenderer.drawShapeOutline(shape, (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
+
+                            GlStateManager.popMatrix();
+                            GlStateManager.matrixMode(5888);
+                            GlStateManager.depthMask(true);
+                            GlStateManager.enableTexture();
+                            GlStateManager.disableBlend();
+                        } else if (hitResult.getSide().getAxis() == Direction.Axis.Z)
+                        {
+                            GlStateManager.enableBlend();
+                            GlStateManager.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                            GlStateManager.lineWidth(Math.max(2.5F, (float) this.client.window.getFramebufferWidth() / 1920.0F * 2.5F));
+                            GlStateManager.disableTexture();
+                            GlStateManager.depthMask(false);
+                            GlStateManager.matrixMode(5889);
+                            GlStateManager.pushMatrix();
+                            GlStateManager.scalef(1.0F, 1.0F, 0.999F);
+                            double double_1 = camera.getPos().x;
+                            double double_2 = camera.getPos().y;
+                            double double_3 = camera.getPos().z;
+
+                            VoxelShape shape = VoxelShapes.empty();
+
+                            for (int x = -1; x < 2; x++)
+                            {
+                                for (int y = -1; y < 2; y++)
+                                {
+                                    if (client.world.getBlockState(blockPos_1.add(x, y, 0)) != Blocks.AIR.getDefaultState() || AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableFull3x3)
+                                    {
+                                        if (!AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().fullBlockHitbox)
+                                        {
+                                            shape = VoxelShapes.union(shape, client.world.getBlockState(blockPos_1.add(x, y, 0)).getOutlineShape(client.world, blockPos_1.add(x, y, 0)).offset(x, y, 0));
+                                        } else
+                                        {
+                                            shape = VoxelShapes.union(shape, VoxelShapes.fullCube().offset(x, y, 0));
+                                        }
+                                    }
+                                }
+                            }
+
+                            WorldRenderer.drawShapeOutline(shape, (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
+
+                            GlStateManager.popMatrix();
+                            GlStateManager.matrixMode(5888);
+                            GlStateManager.depthMask(true);
+                            GlStateManager.enableTexture();
+                            GlStateManager.disableBlend();
                         }
-
-                        WorldRenderer.drawShapeOutline(shape, (double) blockPos_1.getX() - double_1, (double) blockPos_1.getY() - double_2, (double) blockPos_1.getZ() - double_3, 0.0F, 0.0F, 0.0F, 0.4F);
-
-                        GlStateManager.popMatrix();
-                        GlStateManager.matrixMode(5888);
-                        GlStateManager.depthMask(true);
-                        GlStateManager.enableTexture();
-                        GlStateManager.disableBlend();
                     }
                 }
             }
