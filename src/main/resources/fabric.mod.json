@@ -22,7 +22,7 @@
     ]
   },
   "mixins": [
-    "modid.client.json"
+    "vanillahammers.mixin.json"
   ],
   "requires": {
     "fabricloader": "=>0.4.0",
