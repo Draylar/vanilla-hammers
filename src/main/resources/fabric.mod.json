@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "id": "vanilla-hammers",
-  "version": "1.3.3",
+  "version": "1.4.0",
 
   "name": "Vanilla Hammers",
-  "description": "Adds 13 new hammers to the game!",
+  "description": "Adds a ton of new hammers to the game!",
   "authors": [
     "Draylar"
   ],
