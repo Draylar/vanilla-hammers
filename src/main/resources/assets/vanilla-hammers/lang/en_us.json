@@ -14,6 +14,10 @@
   "item.vanilla-hammers.slime_hammer": "Slime Hammer",
   "item.vanilla-hammers.ender_hammer": "Ender Hammer",
 
+  "item.vanilla-hammers.vibranium_hammer": "Vibranium Hammer",
+  "item.vanilla-hammers.glowstone_hammer": "Glowstone Hammer",
+  "item.vanilla-hammers.nether_hammer": "Nether Hammer",
+
   "text.autoconfig.vanilla-hammers.option.fullBlockHitbox": "Full Block Hitbox",
   "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "Extra Vanilla Material Hammers",
   "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "Tater Hammer",

@@ -39,6 +39,13 @@ public class HammerRegistry
                 register(HammerMaterials.POTATO, 3, -2.3f, "tater");
             }
         }
+
+        if(FabricLoader.getInstance().isModLoaded("netherthings"))
+        {
+            register(HammerMaterials.GLOWSTONE, 5, -2.3f, "glowstone");
+            register(HammerMaterials.NETHER, 4, -2.1f, "nether");
+            register(HammerMaterials.VIBRANIUM, 10, -2.9f, "vibranium");
+        }
     }
 
     private static HammerItem register(ToolMaterial material, int attackDamage, float attackSpeed, String hammerName)

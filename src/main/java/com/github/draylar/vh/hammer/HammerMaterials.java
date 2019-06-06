@@ -55,6 +55,15 @@ public enum HammerMaterials implements ToolMaterial
     }),
     POTATO(1, 500 * VanillaHammers.DURABILITY_MODIFIER, 4.0F / 3.5f, 0.0f, 100, () -> {
         return Ingredient.ofItems(Registry.ITEM.get(new Identifier("lil-tater", "lil_tater")));
+    }),
+    GLOWSTONE(2, 442 * VanillaHammers.DURABILITY_MODIFIER, 5.0F / 3.5f, 0.0f, 15, () -> {
+        return Ingredient.ofItems(Registry.ITEM.get(new Identifier("netherthings", "glowstone_ingot")));
+    }),
+    NETHER(1, 280 * VanillaHammers.DURABILITY_MODIFIER, 5.0F / 3.5f, 0.0f, 77, () -> {
+        return Ingredient.ofItems(Registry.ITEM.get(new Identifier("netherthings", "nether_brick")));
+    }),
+    VIBRANIUM(1, 21850 * VanillaHammers.DURABILITY_MODIFIER, 22f / 3.5f, 0.0f, 7, () -> {
+        return Ingredient.ofItems(Registry.ITEM.get(new Identifier("netherthings", "vibranium")));
     });
 
 

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DdD",
+    " s ",
+    " s "
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:nether_brick"
+    },
+    "d": {
+      "item": "minecraft:netherrack"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "vanilla-hammers:nether_hammer"
+  }
+}
