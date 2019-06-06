@@ -62,7 +62,7 @@ public enum HammerMaterials implements ToolMaterial
     NETHER(1, 280 * VanillaHammers.DURABILITY_MODIFIER, 5.0F / 3.5f, 0.0f, 77, () -> {
         return Ingredient.ofItems(Registry.ITEM.get(new Identifier("netherthings", "nether_brick")));
     }),
-    VIBRANIUM(1, 21850 * VanillaHammers.DURABILITY_MODIFIER, 22f / 3.5f, 0.0f, 7, () -> {
+    VIBRANIUM(1, (int) (21850d * (VanillaHammers.DURABILITY_MODIFIER / 2.5f)), 22f / 3.5f, 0.0f, 7, () -> {
         return Ingredient.ofItems(Registry.ITEM.get(new Identifier("netherthings", "vibranium")));
     });
 
