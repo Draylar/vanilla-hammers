@@ -6,7 +6,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 archivesBaseName = "vanilla-hammers"
-version = "1.4.1"
+version = "1.4.2"
 
 minecraft {
 }
@@ -32,8 +32,6 @@ dependencies {
 	// cloth & autoconfig
 	modCompile "cloth-config:ClothConfig:0.2.1.14"
 	modCompile "me.sargunvohra.mcmods:auto-config:1.1.2+mc1.14.1"
-
-	// jij
 	include "cloth-config:ClothConfig:0.2.1.14"
 	include "me.sargunvohra.mcmods:auto-config:1.0.0+mc1.14"
 
