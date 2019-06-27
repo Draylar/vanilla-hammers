@@ -87,7 +87,7 @@ public enum HammerMaterials implements ToolMaterial
         return this.durability;
     }
 
-    public float getBlockBreakingSpeed() {
+    public float getMiningSpeed() {
         return this.blockBreakSpeed;
     }
 

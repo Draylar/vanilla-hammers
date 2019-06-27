@@ -34,11 +34,11 @@ public class HammerItem extends PickaxeItem
 
     public HammerItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed)
     {
-        super(toolMaterial, attackDamage, attackSpeed, new Item.Settings().itemGroup(ItemGroup.TOOLS));
+        super(toolMaterial, attackDamage, attackSpeed, new Item.Settings().group(ItemGroup.TOOLS));
     }
 
     @Override
-    public boolean beforeBlockBreak(BlockState state, World world, BlockPos blockPos, PlayerEntity player)
+    public boolean canMine(BlockState state, World world, BlockPos blockPos, PlayerEntity player)
     {
         VanillaHammersConfig config = AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig();
 
@@ -116,7 +116,7 @@ public class HammerItem extends PickaxeItem
         }
 
 
-        player.inventory.getMainHandStack().applyDamage(totalBroken, player, t ->
+        player.inventory.getMainHandStack().damage(totalBroken, player, t ->
         {
         });
 
