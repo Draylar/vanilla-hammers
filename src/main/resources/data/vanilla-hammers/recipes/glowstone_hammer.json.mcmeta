@@ -1,3 +1,5 @@
 {
-    "libcd:mod_loaded", "netherthings"
+    "when": [
+        { "libcd:mod_loaded": "netherthings" }
+    ]
 }
