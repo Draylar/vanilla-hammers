@@ -6,7 +6,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 archivesBaseName = "vanilla-hammers"
-version = "1.4.2"
+version = "1.4.3"
 
 minecraft {
 }
