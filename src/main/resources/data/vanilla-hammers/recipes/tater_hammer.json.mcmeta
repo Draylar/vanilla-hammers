@@ -1,3 +1,5 @@
 {
-    "libcd:mod_loaded", "lil-tater"
+    "when": [
+        { "libcd:mod_loaded": "lil-tater" }
+    ]
 }
