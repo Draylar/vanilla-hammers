@@ -16,6 +16,7 @@ repositories {
 	maven { url = "https://minecraft.curseforge.com/api/maven" }
 	maven { url = 'http://maven.sargunv.s3-website-us-west-2.amazonaws.com/' }
 	maven { url = 'http://server.bbkr.space:8081/artifactory/libs-release' }
+	maven { url = 'https://jitpack.io' }
 }
 
 
@@ -34,6 +35,9 @@ dependencies {
 	modCompile "me.sargunvohra.mcmods:auto-config:1.1.2+mc1.14.1"
 	include "cloth-config:ClothConfig:0.2.1.14"
 	include "me.sargunvohra.mcmods:auto-config:1.0.0+mc1.14"
+
+	//DynaGear for hammers in more materials
+	modCompile "io.github.cottonmc:DynaGear:1.2.0+1.14.3"
 
 	// mod menu compat
 	modCompile "io.github.prospector.modmenu:ModMenu:1.5.4-85"

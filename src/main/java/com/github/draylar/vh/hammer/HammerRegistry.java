@@ -3,6 +3,8 @@ package com.github.draylar.vh.hammer;
 import com.github.draylar.vh.config.VanillaHammersConfig;
 import me.sargunvohra.mcmods.autoconfig1.AutoConfig;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
