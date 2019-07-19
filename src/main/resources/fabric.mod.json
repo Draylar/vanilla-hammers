@@ -19,6 +19,9 @@
     ],
     "modmenu": [
       "com.github.draylar.vh.ModMenuIntegration"
+    ],
+    "dynagear:equipment_types": [
+      "com.github.draylar.vh.compat.DynaGearCompat"
     ]
   },
   "mixins": [
