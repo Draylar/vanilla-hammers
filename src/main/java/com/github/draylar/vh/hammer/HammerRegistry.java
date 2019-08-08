@@ -12,6 +12,7 @@ import net.minecraft.util.registry.Registry;
 public class HammerRegistry
 {
     public static HammerItem WOOD;
+    public static HammerItem SLIME;
 
     public static void registerHammers()
     {
@@ -30,7 +31,7 @@ public class HammerRegistry
             register(HammerMaterials.FIERY, 6, -2.3f, "fiery");
             register(HammerMaterials.PRISMARINE, 6, -2.3f, "prismarine");
             register(HammerMaterials.ENDER, 10, -3.3f, "ender");
-            register(HammerMaterials.SLIME, 7, -3f, "slime");
+            SLIME = register(HammerMaterials.SLIME, 7, -3f, "slime");
         }
 
 
