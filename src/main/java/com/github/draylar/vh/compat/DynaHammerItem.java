@@ -1,6 +1,6 @@
 package com.github.draylar.vh.compat;
 
-import com.github.draylar.vh.hammer.HammerItem;
+import com.github.draylar.vh.api.HammerItem;
 import io.github.cottonmc.dynagear.api.ConfiguredMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

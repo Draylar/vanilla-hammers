@@ -1,6 +1,6 @@
 package com.github.draylar.vh.mixin;
 
-import com.github.draylar.vh.hammer.HammerRegistry;
+import com.github.draylar.vh.common.HammerRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;

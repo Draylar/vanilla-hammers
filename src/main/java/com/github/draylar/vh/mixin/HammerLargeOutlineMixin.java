@@ -1,7 +1,7 @@
 package com.github.draylar.vh.mixin;
 
 import com.github.draylar.vh.config.VanillaHammersConfig;
-import com.github.draylar.vh.hammer.HammerItem;
+import com.github.draylar.vh.api.HammerItem;
 import com.mojang.blaze3d.platform.GlStateManager;
 import me.sargunvohra.mcmods.autoconfig1.AutoConfig;
 import net.minecraft.block.BlockState;

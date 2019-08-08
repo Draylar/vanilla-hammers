@@ -1,4 +1,4 @@
-package com.github.draylar.vh.hammer;
+package com.github.draylar.vh.common;
 
 import com.github.draylar.vh.VanillaHammers;
 import net.minecraft.block.Blocks;
