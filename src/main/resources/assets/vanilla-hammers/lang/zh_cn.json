@@ -26,7 +26,7 @@
   "text.autoconfig.vanilla-hammers.option.showSingleBlockWhenSneaking": "潜行时显示单个碰撞箱",
   "text.autoconfig.vanilla-hammers.option.breakSingleBlockWhenSneaking": "潜行时只破坏单个方块",
   "text.autoconfig.vanilla-hammers.category.default": "常规",
-  "text.autoconfig.vanilla-hammers.title": "原版锤子配置文件"
+  "text.autoconfig.vanilla-hammers.title": "原版锤子配置文件",
   
   "item.vanilla-hammers.dynagear_hammer": "%s 锤"
 }
