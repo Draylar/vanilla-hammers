@@ -54,9 +54,10 @@ public class HammerItem extends PickaxeItem
         // this makes it so breaking gravel doesn't break nearby stone
         if (player.getMainHandStack().isEffectiveOn(world.getBlockState(blockPos))) {
             BlockBreaker.breakInRadius(world, player, 1, (breakState) -> {
-                boolean effective = player.getMainHandStack().isEffectiveOn(breakState);
-                boolean hardness = breakState.getHardness(null, null) < originHardness * 5;
-                return effective && hardness;
+                double hardness = breakState.getHardness(null, null);
+                boolean isEffective = player.getMainHandStack().isEffectiveOn(breakState);
+                boolean verifyHardness = hardness < originHardness * 5 && hardness > 0;
+                return isEffective && verifyHardness;
             }, true);
         }
 
