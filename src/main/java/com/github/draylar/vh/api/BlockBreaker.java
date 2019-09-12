@@ -72,7 +72,7 @@ public class BlockBreaker {
         Vec3d rotation = playerEntity.getRotationVec(1);
         Vec3d combined = cameraPos.add(rotation.x * 5, rotation.y * 5, rotation.z * 5);
 
-        BlockHitResult blockHitResult = world.rayTrace(new RayTraceContext(cameraPos, combined, RayTraceContext.ShapeType.OUTLINE, RayTraceContext.FluidHandling.ANY, playerEntity));
+        BlockHitResult blockHitResult = world.rayTrace(new RayTraceContext(cameraPos, combined, RayTraceContext.ShapeType.OUTLINE, RayTraceContext.FluidHandling.NONE, playerEntity));
 
         if (blockHitResult.getType() == HitResult.Type.BLOCK) {
             Direction.Axis axis = blockHitResult.getSide().getAxis();
