@@ -6,7 +6,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 archivesBaseName = "vanilla-hammers"
-version = "1.6.1"
+version = "1.6.2"
 
 minecraft {
 }
@@ -43,9 +43,6 @@ dependencies {
 
 	// DynaGear for hammers in more materials
 	modApi "io.github.cottonmc:DynaGear:1.2.0+1.14.3"
-
-	// mod menu compat
-	// modApi "io.github.prospector.modmenu:ModMenu:1.6.3-95"
 }
 
 // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
