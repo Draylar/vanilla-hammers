@@ -38,11 +38,6 @@ public class HammerItem extends PickaxeItem
     }
 
     @Override
-    public boolean isEffectiveOn(BlockState state) {
-        return Items.DIAMOND_PICKAXE.isEffectiveOn(state);
-    }
-
-    @Override
     public boolean canMine(BlockState state, World world, BlockPos blockPos, PlayerEntity player) {
         if (VanillaHammers.CONFIG.breakSingleBlockWhenSneaking && player.isSneaking()) {
             return true;
