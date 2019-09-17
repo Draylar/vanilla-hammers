@@ -14,10 +14,19 @@
   "item.vanilla-hammers.slime_hammer": "史莱姆锤",
   "item.vanilla-hammers.ender_hammer": "末影锤",
 
+  "item.vanilla-hammers.vibranium_hammer": "振金锤",
+  "item.vanilla-hammers.glowstone_hammer": "萤石锤",
+  "item.vanilla-hammers.nether_hammer": "下界锤",
+  
   "text.autoconfig.vanilla-hammers.option.fullBlockHitbox": "完整方块碰撞箱",
   "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "额外的原版材质锤子",
   "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "马铃薯锤",
   "text.autoconfig.vanilla-hammers.option.enableFull3x3": "完整 3x3 碰撞箱",
+  "text.autoconfig.vanilla-hammers.option.alwaysShowSingleBlockHitbox": "始终显示单个碰撞箱",
+  "text.autoconfig.vanilla-hammers.option.showSingleBlockWhenSneaking": "潜行时显示单个碰撞箱",
+  "text.autoconfig.vanilla-hammers.option.breakSingleBlockWhenSneaking": "潜行时只破坏单个方块",
   "text.autoconfig.vanilla-hammers.category.default": "常规",
-  "text.autoconfig.vanilla-hammers.title": "原版锤子配置文件"
+  "text.autoconfig.vanilla-hammers.title": "原版锤子配置文件",
+  
+  "item.vanilla-hammers.dynagear_hammer": "%s 锤"
 }
