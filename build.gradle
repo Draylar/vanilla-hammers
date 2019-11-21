@@ -18,6 +18,7 @@ repositories {
 	maven { url = 'http://maven.sargunv.s3-website-us-west-2.amazonaws.com/' }
 	maven { url = 'http://server.bbkr.space:8081/artifactory/libs-release' }
 	maven { url = 'https://jitpack.io' }
+	maven { url "https://maven.swordglowsblue.com" }
 
 	jcenter()
 }
@@ -30,8 +31,8 @@ dependencies {
 	modApi "net.fabricmc.fabric-api:fabric-api:0.3.0+build.207"
 
 	// LibCD for conditional recipes
-	modApi 'io.github.cottonmc:LibCD:1.3.1+1.14.4'
-	include 'io.github.cottonmc:LibCD:1.3.1+1.14.4'
+	modApi 'io.github.cottonmc:LibCD:1.6.3+1.14.4'
+	include 'io.github.cottonmc:LibCD:1.6.3+1.14.4'
 
 	// auto config
 	modApi "me.sargunvohra.mcmods:auto-config:1.2.0+mc1.14.4"
@@ -42,7 +43,8 @@ dependencies {
 	include 'me.shedaniel.cloth:config-2:0.5.2'
 
 	// DynaGear for hammers in more materials
-	modApi "io.github.cottonmc:DynaGear:1.2.0+1.14.3"
+	modApi ("io.github.cottonmc:DynaGear:1.3.3+1.14.4") { transitive = false }
+	modApi "artificemc:artifice:0.3.4"
 }
 
 // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
