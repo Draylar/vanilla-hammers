@@ -18,6 +18,7 @@ repositories {
 	maven { url = 'http://maven.sargunv.s3-website-us-west-2.amazonaws.com/' }
 	maven { url = 'http://server.bbkr.space:8081/artifactory/libs-release' }
 	maven { url = 'https://jitpack.io' }
+	maven { url "https://maven.swordglowsblue.com" }
 
 	jcenter()
 }
@@ -41,6 +42,7 @@ dependencies {
 
 	// DynaGear for hammers in more materials
 	modApi "io.github.cottonmc:DynaGear:${project.dynagear_version}"
+  modApi "artificemc:artifice:0.3.4"
 
 	// dev modmenu
 	modCompile "io.github.prospector:modmenu:${project.mod_menu_version}"

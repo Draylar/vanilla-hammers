@@ -8,7 +8,7 @@ import net.minecraft.sound.SoundEvent;
 
 public class HammerConfiguredMaterial extends ConfiguredMaterial {
 	public HammerConfiguredMaterial(ConfiguredMaterial mat) {
-		this(mat.getName(), Integer.toString(mat.getColor()), mat.getMaterialId(), mat.getBlockMaterialId(), mat.asTool().getEnchantability(),
+		this(mat.getName(), mat.getColorString(), mat.getMaterialId(), mat.getBlockMaterialId(), mat.asTool().getEnchantability(),
 				mat.asTool().getDurability(), mat.asTool().getMiningLevel(), mat.asTool().getMiningSpeed(), mat.asTool().getAttackDamage(),
 				mat.asArmor().getDurability(EquipmentSlot.FEET)/13, getProtAmounts(mat), mat.asArmor().getToughness(), mat.asArmor().getEquipSound());
 	}
