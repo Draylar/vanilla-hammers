@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class HammerKnockbackMixin {
 
     @Inject(at = @At("HEAD"), method = "getKnockback", cancellable = true)
-    private static void replaceKnockback(LivingEntity livingEntity, CallbackInfoReturnable<Integer> info) {
+    private static void getKnockback(LivingEntity livingEntity, CallbackInfoReturnable<Integer> info) {
         if(livingEntity.getMainHandStack().getItem().equals(HammerRegistry.SLIME)) {
             info.setReturnValue(3);
             info.cancel();
