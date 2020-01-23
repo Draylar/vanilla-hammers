@@ -3,7 +3,7 @@ package com.github.draylar.vh.api;
 import com.github.draylar.vh.VanillaHammers;
 import com.github.draylar.vh.config.VanillaHammersConfig;
 import com.google.common.collect.ImmutableSet;
-import me.sargunvohra.mcmods.autoconfig1.AutoConfig;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

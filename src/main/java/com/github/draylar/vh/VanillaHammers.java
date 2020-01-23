@@ -2,10 +2,10 @@ package com.github.draylar.vh;
 
 import com.github.draylar.vh.config.VanillaHammersConfig;
 import com.github.draylar.vh.common.HammerRegistry;
-import me.sargunvohra.mcmods.autoconfig1.AutoConfig;
-import me.sargunvohra.mcmods.autoconfig1.serializer.GsonConfigSerializer;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import me.sargunvohra.mcmods.autoconfig1u.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.impl.registry.FuelRegistryImpl;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 
 public class VanillaHammers implements ModInitializer
 {
@@ -16,6 +16,6 @@ public class VanillaHammers implements ModInitializer
 	public void onInitialize()
 	{
 		HammerRegistry.registerHammers();
-		FuelRegistryImpl.INSTANCE.add(HammerRegistry.WOOD, 400);
+		FuelRegistry.INSTANCE.add(HammerRegistry.WOOD, 400);
 	}
 }

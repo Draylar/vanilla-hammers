@@ -2,7 +2,7 @@ package com.github.draylar.vh.common;
 
 import com.github.draylar.vh.config.VanillaHammersConfig;
 import com.github.draylar.vh.api.HammerItem;
-import me.sargunvohra.mcmods.autoconfig1.AutoConfig;
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.util.Identifier;

@@ -6,7 +6,6 @@
     "HammerKnockbackMixin"
   ],
   "client": [
-    "CancelHammerOutlineMixin",
     "HammerLargeOutlineMixin"
   ],
   "injectors": {
