@@ -24,10 +24,40 @@
   "text.autoconfig.vanilla-hammers.option.enableFull3x3": "Full 3x3 Hitbox",
   "text.autoconfig.vanilla-hammers.option.alwaysShowSingleBlockHitbox": "Always Show Single Hitbox",
   "text.autoconfig.vanilla-hammers.option.showSingleBlockWhenSneaking": "Single Hitbox When Sneaking",
-  "text.autoconfig.vanilla-hammers.option.breakSingleBlockWhenSneaking": "Single Break When Sneaking",
+  "text.autoconfig.vanilla-hammers.option.breakSingleBlockWheEnSneaking": "Single Break When Sneaking",
   "text.autoconfig.vanilla-hammers.category.default": "General",
   "text.autoconfig.vanilla-hammers.title": "Vanilla Hammers Config",
   "text.autoconfig.vanilla-hammers.option.durabilityModifier": "Hammer Durability Modifier",
 
-  "item.vanilla-hammers.dynagear_hammer": "%s Hammer"
+  "item.vanilla-hammers.dynagear_hammer": "%s Hammer",
+
+  "enchantment.vanilla-hammers.gigantism_curse": "Curse of Gigantism",
+
+  "vanilla-hammers.advancements.root.title": "Vanilla Hammers",
+  "vanilla-hammers.advancements.stone_hammer.title": "Rock Solid Hammer",
+  "vanilla-hammers.advancements.slime_hammer.title": "Bouncy Weapon",
+  "vanilla-hammers.advancements.lapis_hammer.title": "Budget Diamonds",
+  "vanilla-hammers.advancements.iron_hammer.title": "Getting a (Hammer) Upgrade",
+  "vanilla-hammers.advancements.prismarine_hammer.title": "Aquatic Alternatives",
+  "vanilla-hammers.advancements.quartz_hammer.title": "Fiery Beginnings",
+  "vanilla-hammers.advancements.golden_hammer.title": "Rich Mining Solutions",
+  "vanilla-hammers.advancements.diamond_hammer.title": "Prestigious Hammer",
+  "vanilla-hammers.advancements.emerald_hammer.title": "Hammer of the Trader",
+  "vanilla-hammers.advancements.fiery_hammer.title": "Fiery Ends",
+  "vanilla-hammers.advancements.obsidian_hammer.title": "Really Rock Solid Hammer",
+  "vanilla-hammers.advancements.ender_hammer.title": "The Hammer Above All",
+
+  "vanilla-hammers.advancements.root.description": "How about a hammer instead?",
+  "vanilla-hammers.advancements.stone_hammer.description": "Start with the basics and craft a Stone Hammer.",
+  "vanilla-hammers.advancements.slime_hammer.description": "Craft a Slime Hammer... how about whacking something with it?",
+  "vanilla-hammers.advancements.lapis_hammer.description": "It's a Diamond Hammer, not a Lapis Hammer!",
+  "vanilla-hammers.advancements.iron_hammer.description": "Craft an Iron Hammer.",
+  "vanilla-hammers.advancements.prismarine_hammer.description": "Craft a Prismarine Hammer with the material of the seas.",
+  "vanilla-hammers.advancements.quartz_hammer.description": "Begin your fiery conquest with a Quartz Hammer.",
+  "vanilla-hammers.advancements.golden_hammer.description": "The Golden Hammer doesn't work well, but it sure does look cool!",
+  "vanilla-hammers.advancements.diamond_hammer.description": "Craft a Diamond Hammer.",
+  "vanilla-hammers.advancements.emerald_hammer.description": "Showcase your uniqueness with a Emerald Hammer.",
+  "vanilla-hammers.advancements.fiery_hammer.description": "Finalize your descent with a Fiery Hammer.",
+  "vanilla-hammers.advancements.obsidian_hammer.description": "Craft an Obsidian Hammer and go mining for 17 hours without stopping.",
+  "vanilla-hammers.advancements.ender_hammer.description": "Craft the Ender Hammer to end your mining woes."
 }

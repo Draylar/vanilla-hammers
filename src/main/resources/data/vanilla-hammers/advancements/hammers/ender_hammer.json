@@ -1,0 +1,36 @@
+{
+  "parent": "vanilla-hammers:hammers/emerald_hammer",
+  "display": {
+    "icon": {
+      "item": "vanilla-hammers:ender_hammer"
+    },
+    "title": {
+      "translate": "vanilla-hammers.advancements.ender_hammer.title"
+    },
+    "description": {
+      "translate": "vanilla-hammers.advancements.ender_hammer.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png"
+  },
+  "criteria": {
+    "ender_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "vanilla-hammers:ender_hammer"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ender_hammer"
+    ]
+  ]
+}

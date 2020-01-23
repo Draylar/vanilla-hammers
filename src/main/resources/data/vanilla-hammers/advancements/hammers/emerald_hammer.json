@@ -1,0 +1,36 @@
+{
+  "parent": "vanilla-hammers:hammers/iron_hammer",
+  "display": {
+    "icon": {
+      "item": "vanilla-hammers:emerald_hammer"
+    },
+    "title": {
+      "translate": "vanilla-hammers.advancements.emerald_hammer.title"
+    },
+    "description": {
+      "translate": "vanilla-hammers.advancements.emerald_hammer.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png"
+  },
+  "criteria": {
+    "emerald_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "vanilla-hammers:emerald_hammer"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "emerald_hammer"
+    ]
+  ]
+}

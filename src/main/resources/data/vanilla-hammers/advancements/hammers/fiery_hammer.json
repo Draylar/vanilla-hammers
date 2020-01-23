@@ -1,0 +1,36 @@
+{
+  "parent": "vanilla-hammers:hammers/quartz_hammer",
+  "display": {
+    "icon": {
+      "item": "vanilla-hammers:fiery_hammer"
+    },
+    "title": {
+      "translate": "vanilla-hammers.advancements.fiery_hammer.title"
+    },
+    "description": {
+      "translate": "vanilla-hammers.advancements.fiery_hammer.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png"
+  },
+  "criteria": {
+    "fiery_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "vanilla-hammers:fiery_hammer"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "fiery_hammer"
+    ]
+  ]
+}

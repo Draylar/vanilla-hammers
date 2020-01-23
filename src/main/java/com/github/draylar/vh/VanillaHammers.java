@@ -1,5 +1,6 @@
 package com.github.draylar.vh;
 
+import com.github.draylar.vh.registry.Enchantments;
 import com.github.draylar.vh.registry.Items;
 import com.github.draylar.vh.config.VanillaHammersConfig;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
@@ -16,6 +17,8 @@ public class VanillaHammers implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		Items.init();
+		Enchantments.init();
+
 		FuelRegistry.INSTANCE.add(Items.WOOD, 400);
 	}
 

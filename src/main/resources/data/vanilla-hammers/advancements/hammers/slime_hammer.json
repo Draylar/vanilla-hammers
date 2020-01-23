@@ -1,0 +1,36 @@
+{
+  "parent": "vanilla-hammers:hammers/root",
+  "display": {
+    "icon": {
+      "item": "vanilla-hammers:slime_hammer"
+    },
+    "title": {
+      "translate": "vanilla-hammers.advancements.slime_hammer.title"
+    },
+    "description": {
+      "translate": "vanilla-hammers.advancements.slime_hammer.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png"
+  },
+  "criteria": {
+    "slime_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "vanilla-hammers:slime_hammer"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "slime_hammer"
+    ]
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "parent": "vanilla-hammers:hammers/stone_hammer",
+  "display": {
+    "icon": {
+      "item": "vanilla-hammers:prismarine_hammer"
+    },
+    "title": {
+      "translate": "vanilla-hammers.advancements.prismarine_hammer.title"
+    },
+    "description": {
+      "translate": "vanilla-hammers.advancements.prismarine_hammer.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png"
+  },
+  "criteria": {
+    "prismarine_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "vanilla-hammers:prismarine_hammer"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "prismarine_hammer"
+    ]
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "vanilla-hammers:wooden_hammer"
+    },
+    "title": {
+      "translate": "vanilla-hammers.advancements.root.title"
+    },
+    "description": {
+      "translate": "vanilla-hammers.advancements.root.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png"
+  },
+  "criteria": {
+    "wooden_pickaxe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:wooden_pickaxe"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "wooden_pickaxe"
+    ]
+  ]
+}
