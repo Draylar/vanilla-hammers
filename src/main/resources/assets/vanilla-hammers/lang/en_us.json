@@ -59,5 +59,8 @@
   "vanilla-hammers.advancements.emerald_hammer.description": "Showcase your uniqueness with a Emerald Hammer.",
   "vanilla-hammers.advancements.fiery_hammer.description": "Finalize your descent with a Fiery Hammer.",
   "vanilla-hammers.advancements.obsidian_hammer.description": "Craft an Obsidian Hammer and go mining for 17 hours without stopping.",
-  "vanilla-hammers.advancements.ender_hammer.description": "Craft the Ender Hammer to end your mining woes."
+  "vanilla-hammers.advancements.ender_hammer.description": "Craft the Ender Hammer to end your mining woes.",
+
+  "vanilla-hammers.advancements.curse_of_gigantism.title": "The Curse of Gigantism",
+  "vanilla-hammers.advancements.curse_of_gigantism.description": "Find the rare Curse of Gigantism book, which can be used to power up a hammer at the cost of speed."
 }

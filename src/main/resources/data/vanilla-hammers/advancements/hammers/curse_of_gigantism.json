@@ -1,0 +1,41 @@
+{
+  "parent": "vanilla-hammers:hammers/root",
+  "display": {
+    "icon": {
+      "item": "minecraft:enchanted_book"
+    },
+    "title": {
+      "translate": "vanilla-hammers.advancements.curse_of_gigantism.title"
+    },
+    "description": {
+      "translate": "vanilla-hammers.advancements.curse_of_gigantism.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png"
+  },
+  "criteria": {
+    "curse_of_gigantism": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:enchanted_book",
+            "stored_enchantments": [
+              {
+                "enchantment": "vanilla-hammers:gigantism_curse"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "curse_of_gigantism"
+    ]
+  ]
+}
