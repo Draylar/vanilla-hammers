@@ -27,6 +27,7 @@
   "text.autoconfig.vanilla-hammers.option.breakSingleBlockWhenSneaking": "Single Break When Sneaking",
   "text.autoconfig.vanilla-hammers.category.default": "General",
   "text.autoconfig.vanilla-hammers.title": "Vanilla Hammers Config",
+  "text.autoconfig.vanilla-hammers.option.durabilityModifier": "Hammer Durability Modifier",
 
   "item.vanilla-hammers.dynagear_hammer": "%s Hammer"
 }
