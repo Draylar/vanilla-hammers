@@ -1,8 +1,8 @@
 package com.github.draylar.vh;
 
 import com.github.draylar.vh.registry.Enchantments;
-import com.github.draylar.vh.registry.Items;
 import com.github.draylar.vh.config.VanillaHammersConfig;
+import com.github.draylar.vh.registry.Items;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
