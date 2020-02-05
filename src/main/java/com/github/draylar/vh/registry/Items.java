@@ -18,6 +18,7 @@ public class Items {
     public static Item IRON = register(HammerMaterials.IRON, 5, -2.8f, "iron");
     public static Item GOLDEN = register(HammerMaterials.GOLD, 5, -2.5f, "golden");
     public static Item DIAMOND = register(HammerMaterials.DIAMOND, 10, -3f, "diamond");
+    public static Item NETHERITE = register(HammerMaterials.NETHERITE, 11, -3.1f, "netherite");
 
     public static Item EMERALD;
     public static Item OBSIDIAN;
