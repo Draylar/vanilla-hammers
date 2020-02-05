@@ -25,6 +25,9 @@ public enum HammerMaterials implements ToolMaterial {
     DIAMOND(3, 1561 * VanillaHammers.CONFIG.durabilityModifier, 8.0F / 3.5f, 0.0f, 10, () -> {
         return Ingredient.ofItems(Items.DIAMOND);
     }),
+    NETHERITE(4, 2031 * VanillaHammers.CONFIG.durabilityModifier, 9.0F / 3.5F, 0.0F, 15, () -> {
+        return Ingredient.ofItems(Items.NETHERITE_INGOT);
+    }),
     GOLD(0, 32 * VanillaHammers.CONFIG.durabilityModifier, 12.0F / 3.5f, 0.0f, 22, () -> {
         return Ingredient.ofItems(Items.GOLD_INGOT);
     }),
@@ -73,13 +76,13 @@ public enum HammerMaterials implements ToolMaterial {
     private final int enchantability;
     private final Lazy<Ingredient> repairIngredient;
 
-    HammerMaterials(int int_1, int int_2, float float_1, float float_2, int int_3, Supplier<Ingredient> supplier_1) {
-        this.miningLevel = int_1;
-        this.durability = int_2;
-        this.blockBreakSpeed = float_1;
-        this.attackDamage = float_2;
-        this.enchantability = int_3;
-        this.repairIngredient = new Lazy(supplier_1);
+    HammerMaterials(int miningLevel, int durability, float blockBreakSpeed, float attackDamage, int enchantability, Supplier<Ingredient> repairIngredient) {
+        this.miningLevel = miningLevel;
+        this.durability = durability;
+        this.blockBreakSpeed = blockBreakSpeed;
+        this.attackDamage = attackDamage;
+        this.enchantability = enchantability;
+        this.repairIngredient = new Lazy<>(repairIngredient);
     }
 
     public int getDurability() {
