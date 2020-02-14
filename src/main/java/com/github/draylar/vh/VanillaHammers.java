@@ -5,7 +5,7 @@ import com.github.draylar.vh.common.HammerRegistry;
 import me.sargunvohra.mcmods.autoconfig1.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.impl.registry.FuelRegistryImpl;
+import net.fabricmc.fabric.impl.content.registry.FuelRegistryImpl;
 
 public class VanillaHammers implements ModInitializer
 {
