@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "vanilla-hammers:iron_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:iron_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["vanilla-hammers:iron_hammer"]
+  }
+}

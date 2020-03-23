@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "vanilla-hammers:quartz_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:quartz"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["vanilla-hammers:quartz_hammer"]
+  }
+}

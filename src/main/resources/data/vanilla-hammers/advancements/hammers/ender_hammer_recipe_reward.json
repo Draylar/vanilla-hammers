@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "vanilla-hammers:ender_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:dragon_head"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["vanilla-hammers:ender_hammer"]
+  }
+}

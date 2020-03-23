@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "vanilla-hammers:fiery_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:magma_cream",
+            "item": "minecraft:magma_block"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["vanilla-hammers:fiery_hammer"]
+  }
+}
