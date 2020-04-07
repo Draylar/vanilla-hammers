@@ -1,0 +1,5 @@
+{
+    "when": [
+        { "libcd:item_exists": "vanilla-hammers:emerald_hammer" }
+    ]
+}
