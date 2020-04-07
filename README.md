@@ -1,4 +1,7 @@
 # Vanilla Hammers
+[![CurseForge](http://cf.way2muchnoise.eu/full_317756_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/vanilla-hammers)
+[![Curseforge](http://cf.way2muchnoise.eu/versions/For%20MC_317756_all.svg)](https://www.curseforge.com/minecraft/mc-mods/vanilla-hammers)
+[![](https://jitpack.io/v/Draylar/vanilla-hammers.svg)](https://jitpack.io/#Draylar/vanilla-hammers)
 
 Vanilla Hammers is a 1.14 Fabric mod that adds 13 special hammers to the game, all designed around vanilla materials.
 
