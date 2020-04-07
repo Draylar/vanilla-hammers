@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "vanilla-hammers:lapis_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:lapis_lazuli"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["vanilla-hammers:lapis_hammer"]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "vanilla-hammers:obsidian_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:obsidian"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["vanilla-hammers:obsidian_hammer"]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "vanilla-hammers:stone_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:stone"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["vanilla-hammers:stone_hammer"]
+  }
+}

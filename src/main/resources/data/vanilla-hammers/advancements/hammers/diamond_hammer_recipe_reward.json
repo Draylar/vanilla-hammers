@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "vanilla-hammers:diamond_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:diamond"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["vanilla-hammers:diamond_hammer"]
+  }
+}

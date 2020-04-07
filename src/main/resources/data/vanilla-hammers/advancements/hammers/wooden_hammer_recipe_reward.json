@@ -1,0 +1,18 @@
+{
+  "criteria": {
+    "vanilla-hammers:wooden_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:logs",
+            "tag": "minecraft:planks"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["vanilla-hammers:wooden_hammer"]
+  }
+}

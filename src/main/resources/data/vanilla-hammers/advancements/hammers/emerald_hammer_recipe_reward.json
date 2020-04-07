@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "vanilla-hammers:emerald_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:emerald"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["vanilla-hammers:emerald_hammer"]
+  }
+}

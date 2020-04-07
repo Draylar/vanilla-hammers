@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "vanilla-hammers:golden_hammer": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:gold_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": ["vanilla-hammers:golden_hammer"]
+  }
+}
