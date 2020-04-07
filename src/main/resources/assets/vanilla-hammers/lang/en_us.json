@@ -1,4 +1,6 @@
 {
+  "itemGroup.vanilla-hammers.group": "Vanilla Hammers",
+
   "item.vanilla-hammers.wooden_hammer": "Wooden Hammer",
   "item.vanilla-hammers.stone_hammer": "Stone Hammer",
   "item.vanilla-hammers.iron_hammer": "Iron Hammer",

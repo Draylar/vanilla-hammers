@@ -3,17 +3,19 @@ package com.github.draylar.vh.api;
 import com.github.draylar.vh.VanillaHammers;
 import com.github.draylar.vh.registry.Enchantments;
 import net.minecraft.block.BlockState;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class HammerItem extends PickaxeItem {
 
     public HammerItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed) {
-        this(toolMaterial, attackDamage, attackSpeed, new Item.Settings().group(ItemGroup.TOOLS));
+        this(toolMaterial, attackDamage, attackSpeed, new Item.Settings().group(VanillaHammers.GROUP));
     }
 
     public HammerItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Item.Settings settings) {
