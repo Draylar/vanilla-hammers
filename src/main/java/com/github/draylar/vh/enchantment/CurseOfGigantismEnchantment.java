@@ -8,11 +8,11 @@ import net.minecraft.entity.EquipmentSlot;
 public class CurseOfGigantismEnchantment extends Enchantment {
 
     public CurseOfGigantismEnchantment() {
-        super(Enchantment.Weight.VERY_RARE, EnchantmentTarget.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.DIGGER, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
-    protected boolean differs(Enchantment other) {
+    protected boolean canAccept(Enchantment other) {
         return other == Enchantments.EFFICIENCY;
     }
 

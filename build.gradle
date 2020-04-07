@@ -32,8 +32,10 @@ dependencies {
     modCompile "net.fabricmc.fabric-api:fabric-api:${project.api_version}"
 
     // LibCD for conditional recipes
-    modCompile  "io.github.cottonmc:LibCD:${project.libcd_version}"
-    include "io.github.cottonmc:LibCD:${project.libcd_version}"
+//    modCompile  "io.github.cottonmc:LibCD:${project.libcd_version}"
+//    include "io.github.cottonmc:LibCD:${project.libcd_version}"
+    modCompile "com.github.CottonMC:LibCD:1.16-SNAPSHOT"
+    include "com.github.CottonMC:LibCD:1.16-SNAPSHOT"
 
     // config
     modCompile "me.shedaniel.cloth:config-2:${project.cloth_config_version}"

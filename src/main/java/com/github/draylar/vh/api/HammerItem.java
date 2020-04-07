@@ -23,9 +23,9 @@ public class HammerItem extends PickaxeItem {
     }
 
     @Override
-    public float getMiningSpeed(ItemStack stack, BlockState state) {
+    public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
         float modifier = EnchantmentHelper.getLevel(Enchantments.CURSE_OF_GIGANTISM, stack) == 1 ? .2f : 1f;
-        return super.getMiningSpeed(stack, state) * modifier;
+        return super.getMiningSpeedMultiplier(stack, state) * modifier;
     }
 
     @Override
