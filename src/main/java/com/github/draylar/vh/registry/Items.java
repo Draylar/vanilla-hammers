@@ -44,6 +44,7 @@ public class Items {
             PRISMARINE = register(HammerMaterials.PRISMARINE, 6, -2.3f, "prismarine");
             ENDER = register(HammerMaterials.ENDER, 10, -3.3f, "ender");
             SLIME = register(HammerMaterials.SLIME, 7, -3f, "slime");
+            NETHER = register(HammerMaterials.NETHER, 4, -2.1f, "nether");
         }
 
         if (AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableTaterHammer) {
@@ -54,8 +55,12 @@ public class Items {
 
         if (FabricLoader.getInstance().isModLoaded("netherthings")) {
             GLOWSTONE = register(HammerMaterials.GLOWSTONE, 5, -2.3f, "glowstone");
-            NETHER = register(HammerMaterials.NETHER, 4, -2.1f, "nether");
             VIBRANIUM = register(HammerMaterials.VIBRANIUM, 10, -2.9f, "vibranium");
+        }
+        if(FabricLoader.getInstance().isModLoaded("adabraniummod")) {
+            if (VIBRANIUM==null) { // prevent both netherthings and adabranium from registering a vibranium hammer. These are version exclusive so it should never happen
+                VIBRANIUM = register(HammerMaterials.VIBRANIUM,10,-2.9F,"vibranium");
+            }
         }
     }
 
