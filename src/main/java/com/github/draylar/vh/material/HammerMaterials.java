@@ -64,7 +64,8 @@ public enum HammerMaterials implements ToolMaterial {
     VIBRANIUM(3, (int) (21850d * (VanillaHammers.CONFIG.durabilityModifier / 2.5f)), 22f / 3.5f, 0.0f, 7, () -> {
         return Ingredient.ofItems(
                 Registry.ITEM.get(new Identifier("netherthings", "vibranium")),
-                Registry.ITEM.get(new Identifier("adabraniummod","vibranium"))
+                Registry.ITEM.get(new Identifier("adabraniummod","vibranium_ingot"))
+
         );
     });
 
