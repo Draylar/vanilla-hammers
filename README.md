@@ -1,6 +1,6 @@
 # Vanilla Hammers
 
-Vanilla Hammers is a 1.14 Fabric mod that adds 13 special hammers to the game, all designed around vanilla materials.
+Vanilla Hammers is a Fabric mod that adds special hammers to the game. They make mining easier!
 
 ## Installation
 
