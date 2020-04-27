@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DdD",
+    " s ",
+    " s "
+  ],
+  "key": {
+    "D": {
+      "item": "adabraniummod:vibranium_block"
+    },
+    "d": {
+      "item": "adabraniummod:vibranium_ingot"
+    },
+    "s": {
+      "item": "adabraniummod:obsidian_rod"
+    }
+  },
+  "result": {
+    "item": "vanilla-hammers:vibranium_hammer"
+  }
+}

@@ -52,17 +52,21 @@ public enum HammerMaterials implements ToolMaterial {
     SLIME(2, 1500 * VanillaHammers.CONFIG.durabilityModifier, 6f / 3.5f, 0, 20, () -> {
         return Ingredient.ofItems(Items.SLIME_BALL);
     }),
+    NETHER(1, 280 * VanillaHammers.CONFIG.durabilityModifier, 5.0F / 3.5f, 0.0f, 77, () -> {
+        return Ingredient.ofItems(Registry.ITEM.get(new Identifier("minecraft", "nether_brick")));
+    }),
     POTATO(1, 500 * VanillaHammers.CONFIG.durabilityModifier, 4.0F / 3.5f, 0.0f, 100, () -> {
         return Ingredient.ofItems(Registry.ITEM.get(new Identifier("lil-tater", "lil_tater")));
     }),
     GLOWSTONE(2, 442 * VanillaHammers.CONFIG.durabilityModifier, 5.0F / 3.5f, 0.0f, 15, () -> {
         return Ingredient.ofItems(Registry.ITEM.get(new Identifier("netherthings", "glowstone_ingot")));
     }),
-    NETHER(1, 280 * VanillaHammers.CONFIG.durabilityModifier, 5.0F / 3.5f, 0.0f, 77, () -> {
-        return Ingredient.ofItems(Registry.ITEM.get(new Identifier("netherthings", "nether_brick")));
-    }),
     VIBRANIUM(3, (int) (21850d * (VanillaHammers.CONFIG.durabilityModifier / 2.5f)), 22f / 3.5f, 0.0f, 7, () -> {
-        return Ingredient.ofItems(Registry.ITEM.get(new Identifier("netherthings", "vibranium")));
+        return Ingredient.ofItems(
+                Registry.ITEM.get(new Identifier("netherthings", "vibranium")),
+                Registry.ITEM.get(new Identifier("adabraniummod","vibranium_ingot"))
+
+        );
     });
 
 
