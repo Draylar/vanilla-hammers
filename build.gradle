@@ -1,12 +1,12 @@
 plugins {
-    id 'fabric-loom' version '0.2.7-SNAPSHOT'
+    id 'fabric-loom' version '0.4-SNAPSHOT'
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 archivesBaseName = project.modid
-version = project.version
+version = project.version + "-" + project.minecraft_version
 
 minecraft {
 }
@@ -32,8 +32,6 @@ dependencies {
     modCompile "net.fabricmc.fabric-api:fabric-api:${project.api_version}"
 
     // LibCD for conditional recipes
-//    modCompile  "io.github.cottonmc:LibCD:${project.libcd_version}"
-//    include "io.github.cottonmc:LibCD:${project.libcd_version}"
     modCompile "com.github.CottonMC:LibCD:1.16-SNAPSHOT"
     include "com.github.CottonMC:LibCD:1.16-SNAPSHOT"
 
