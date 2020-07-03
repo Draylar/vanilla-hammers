@@ -2,16 +2,22 @@ package com.github.draylar.vh.api;
 
 import com.github.draylar.vh.VanillaHammers;
 import com.github.draylar.vh.registry.Enchantments;
+import com.github.draylar.vh.registry.Items;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.InfestedBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.recipe.RecipeType;
+import net.minecraft.recipe.SmeltingRecipe;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.Optional;
 
 /**
  * Represents a tool that can mine stone ({@link PickaxeItem}) in a certain radius.
@@ -59,16 +65,37 @@ public class HammerItem extends PickaxeItem {
         // only do a 3x3 break if the player's tool is effective on the block they are breaking
         // this makes it so breaking gravel doesn't break nearby stone
         if (player.getMainHandStack().isEffectiveOn(world.getBlockState(blockPos))) {
-            BlockBreaker.breakInRadius(world, player, hasCurseOfGigantism ? breakRadius + 1 : breakRadius, (breakState) -> {
-                double hardness = breakState.getHardness(null, null);
+            BlockBreaker.breakInRadius(
+                    world,
+                    player,
+                    hasCurseOfGigantism ? breakRadius + 1 : breakRadius,
+                    (breakState) -> {
+                        double hardness = breakState.getHardness(null, null);
 
-                // special-case infested blocks for mining
-                boolean isEffective = player.getMainHandStack().isEffectiveOn(breakState) || breakState.getBlock() instanceof InfestedBlock;
+                        // special-case infested blocks for mining
+                        boolean isEffective = player.getMainHandStack().isEffectiveOn(breakState) || breakState.getBlock() instanceof InfestedBlock;
 
-                // ensure hardness is within reasonable bounds of the original hardness, and is over 0 (unless the state is an infested block, special case)
-                boolean verifyHardness = hardness < originHardness * 5 && (breakState.getBlock() instanceof InfestedBlock || hardness > 0);
-                return isEffective && verifyHardness;
-            }, true);
+                        // ensure hardness is within reasonable bounds of the original hardness, and is over 0 (unless the state is an infested block, special case)
+                        boolean verifyHardness = hardness < originHardness * 5 && (breakState.getBlock() instanceof InfestedBlock || hardness > 0);
+                        return isEffective && verifyHardness;
+                    },
+                    (tool, input) -> {
+                        if (tool.getItem().equals(Items.FIERY)) {
+                            Optional<SmeltingRecipe> cooked = world.getRecipeManager().getFirstMatch(
+                                    RecipeType.SMELTING,
+                                    new SimpleInventory(input),
+                                    world
+                            );
+
+                            if (cooked.isPresent()) {
+                                return cooked.get().getOutput().copy();
+                            }
+                        }
+
+                        return input;
+                    },
+                    true
+            );
         }
 
         return true;

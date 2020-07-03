@@ -29,7 +29,7 @@ public class BlockBreaker {
      * @param radius radius to break
      * @param breakValidator check to see if a block can be broken
      */
-    public static void breakInRadius(World world, PlayerEntity playerEntity, int radius, BreakValidator breakValidator, boolean damageTool) {
+    public static void breakInRadius(World world, PlayerEntity playerEntity, int radius, BreakValidator breakValidator, BlockProcessor smelter, boolean damageTool) {
         if(!world.isClient) {
             // collect all potential blocks to break and attempt to break them
             List<BlockPos> brokenBlocks = findPositions(world, playerEntity, radius);
@@ -43,7 +43,16 @@ public class BlockBreaker {
                     // only drop items in creative
                     if(!playerEntity.isCreative()) {
                         BlockPos offsetPos = new BlockPos(pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5);
-                        dropItems(world, Block.getDroppedStacks(state, (ServerWorld) world, pos, null, playerEntity, playerEntity.getMainHandStack()), offsetPos);
+
+                        // obtain dropped stacks for the given block
+                        List<ItemStack> droppedStacks = Block.getDroppedStacks(state, (ServerWorld) world, pos, null, playerEntity, playerEntity.getMainHandStack());
+                        List<ItemStack> processed = new ArrayList<>();
+
+                        // attempt to process stack for mechanics like autosmelt
+                        droppedStacks.forEach(stack -> processed.add(smelter.process(playerEntity.inventory.getMainHandStack(), stack)));
+
+                        // drop items
+                        dropItems(world, processed, offsetPos);
                         state.onStacksDropped(world, pos, playerEntity.getMainHandStack());
                     }
 
