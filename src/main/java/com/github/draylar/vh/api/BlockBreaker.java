@@ -2,7 +2,6 @@ package com.github.draylar.vh.api;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -21,8 +20,10 @@ import java.util.List;
 public class BlockBreaker {
 
     /**
-     * Breaks blocks within the given radius on the axis the player is facing.
-     * If the player is facing the X axis and the radius is 1, a 3x3 area will be destroyed on the X axis.
+     * Breaks blocks within the given radius in the direction the {@link PlayerEntity} is facing.
+     *
+     * <p>For example: If the {@link PlayerEntity} is facing in the X axis direction and the radius is 1, a 3x3 area will be destroyed on the X axis.
+     *
      * @param world world the player is in
      * @param playerEntity the player
      * @param radius radius to break
@@ -30,12 +31,16 @@ public class BlockBreaker {
      */
     public static void breakInRadius(World world, PlayerEntity playerEntity, int radius, BreakValidator breakValidator, boolean damageTool) {
         if(!world.isClient) {
-            List<BlockPos> brokenBlocks = getBreakBlocks(world, playerEntity, radius);
+            // collect all potential blocks to break and attempt to break them
+            List<BlockPos> brokenBlocks = findPositions(world, playerEntity, radius);
             for(BlockPos pos : brokenBlocks) {
                 BlockState state = world.getBlockState(pos);
+
+                // ensure the tool or mechanic can break the given state
                 if(breakValidator.canBreak(state)) {
                     world.breakBlock(pos, false);
 
+                    // only drop items in creative
                     if(!playerEntity.isCreative()) {
                         BlockPos offsetPos = new BlockPos(pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5);
                         dropItems(world, Block.getDroppedStacks(state, (ServerWorld) world, pos, null, playerEntity, playerEntity.getMainHandStack()), offsetPos);
@@ -50,6 +55,13 @@ public class BlockBreaker {
         }
     }
 
+    /**
+     * Drops each {@link ItemStack} from the given {@link List} into the given {@link World} at the given {@link BlockPos}.
+     *
+     * @param world  world to drop items in
+     * @param stacks  list of {@link ItemStack}s to drop in the world
+     * @param pos  position to drop items at
+     */
     private static void dropItems(World world, List<ItemStack> stacks, BlockPos pos) {
         for(ItemStack stack : stacks) {
             ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack);
@@ -57,15 +69,15 @@ public class BlockBreaker {
         }
     }
 
-
     /**
-     * Returns a list of the blocks that would be broken in breakInRadius, but doesn't break them.
-     * @param world world of player
-     * @param playerEntity player breaking
-     * @param radius radisu to break in
-     * @return a list of blocks that would be broken with the given radius and tool
+     * Returns a list of {@link BlockPos} in the given radius considering the {@link PlayerEntity}'s facing direction.
+     *
+     * @param world  world to check in
+     * @param playerEntity  player that is collecting blocks
+     * @param radius  radius to collect blocks in
+     * @return  a list of blocks that would be broken with the given radius and tool
      */
-    public static List<BlockPos> getBreakBlocks(World world, PlayerEntity playerEntity, int radius) {
+    public static List<BlockPos> findPositions(World world, PlayerEntity playerEntity, int radius) {
         ArrayList<BlockPos> potentialBrokenBlocks = new ArrayList<>();
 
         Vec3d cameraPos = playerEntity.getCameraPosVec(1);
