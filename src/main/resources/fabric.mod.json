@@ -24,8 +24,8 @@
   "mixins": [
     "vanillahammers.mixin.json"
   ],
-  "requires": {
-    "fabricloader": "=>0.4.0",
+  "depends": {
+    "fabricloader": "*",
     "fabric": "*"
   }
 }
