@@ -1,9 +1,11 @@
 package com.github.draylar.vh.enchantment;
 
+import com.github.draylar.vh.api.HammerItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.ItemStack;
 
 public class CurseOfGigantismEnchantment extends Enchantment {
 
@@ -14,6 +16,11 @@ public class CurseOfGigantismEnchantment extends Enchantment {
     @Override
     protected boolean canAccept(Enchantment other) {
         return other == Enchantments.EFFICIENCY;
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        return stack.getItem() instanceof HammerItem;
     }
 
     @Override
