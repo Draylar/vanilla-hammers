@@ -25,39 +25,40 @@ public class BlockBreaker {
      * <p>For example: If the {@link PlayerEntity} is facing in the X axis direction and the radius is 1, a 3x3 area will be destroyed on the X axis.
      *
      * @param world world the player is in
-     * @param playerEntity the player
+     * @param player the player
      * @param radius radius to break
      * @param breakValidator check to see if a block can be broken
      */
-    public static void breakInRadius(World world, PlayerEntity playerEntity, int radius, BreakValidator breakValidator, BlockProcessor smelter, boolean damageTool) {
+    public static void breakInRadius(World world, PlayerEntity player, int radius, BreakValidator breakValidator, BlockProcessor smelter, boolean damageTool) {
         if(!world.isClient) {
             // collect all potential blocks to break and attempt to break them
-            List<BlockPos> brokenBlocks = findPositions(world, playerEntity, radius);
+            List<BlockPos> brokenBlocks = findPositions(world, player, radius);
             for(BlockPos pos : brokenBlocks) {
                 BlockState state = world.getBlockState(pos);
 
                 // ensure the tool or mechanic can break the given state
                 if(breakValidator.canBreak(state)) {
                     world.breakBlock(pos, false);
+                    state.getBlock().onBreak(world, pos, state, player);
 
                     // only drop items in creative
-                    if(!playerEntity.isCreative()) {
+                    if(!player.isCreative()) {
                         BlockPos offsetPos = new BlockPos(pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5);
 
                         // obtain dropped stacks for the given block
-                        List<ItemStack> droppedStacks = Block.getDroppedStacks(state, (ServerWorld) world, pos, null, playerEntity, playerEntity.getMainHandStack());
+                        List<ItemStack> droppedStacks = Block.getDroppedStacks(state, (ServerWorld) world, pos, null, player, player.getMainHandStack());
                         List<ItemStack> processed = new ArrayList<>();
 
                         // attempt to process stack for mechanics like autosmelt
-                        droppedStacks.forEach(stack -> processed.add(smelter.process(playerEntity.inventory.getMainHandStack(), stack)));
+                        droppedStacks.forEach(stack -> processed.add(smelter.process(player.inventory.getMainHandStack(), stack)));
 
                         // drop items
                         dropItems(world, processed, offsetPos);
-                        state.onStacksDropped(world, pos, playerEntity.getMainHandStack());
+                        state.onStacksDropped(world, pos, player.getMainHandStack());
                     }
 
                     if (damageTool) {
-                        playerEntity.inventory.getMainHandStack().damage(1, playerEntity, player -> { });
+                        player.inventory.getMainHandStack().damage(1, player, p -> { });
                     }
                 }
             }
