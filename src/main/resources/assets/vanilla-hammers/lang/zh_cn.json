@@ -11,7 +11,7 @@
   "item.vanilla-hammers.obsidian_hammer": "黑曜石锤",
   "item.vanilla-hammers.lapis_hammer": "青金石锤",
   "item.vanilla-hammers.quartz_hammer": "石英锤",
-  "item.vanilla-hammers.tater_hammer": "Lil Tater之锤",
+  "item.vanilla-hammers.tater_hammer": "土豆仔之锤",
   "item.vanilla-hammers.fiery_hammer": "炽烈锤",
   "item.vanilla-hammers.prismarine_hammer": "海晶锤",
   "item.vanilla-hammers.slime_hammer": "史莱姆锤",
@@ -23,7 +23,7 @@
   
   "text.autoconfig.vanilla-hammers.option.fullBlockHitbox": "完整方块碰撞箱",
   "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "额外的原版材质锤子",
-  "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "Lil Tater之锤",
+  "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "土豆仔之锤",
   "text.autoconfig.vanilla-hammers.option.enableFull3x3": "完整 3x3 碰撞箱",
   "text.autoconfig.vanilla-hammers.option.alwaysShowSingleBlockHitbox": "始终显示单个碰撞箱",
   "text.autoconfig.vanilla-hammers.option.showSingleBlockWhenSneaking": "潜行时显示单个碰撞箱",
