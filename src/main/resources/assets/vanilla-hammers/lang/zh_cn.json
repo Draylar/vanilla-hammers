@@ -20,21 +20,14 @@
   "item.vanilla-hammers.vibranium_hammer": "振金锤",
   "item.vanilla-hammers.glowstone_hammer": "荧石锤",
   "item.vanilla-hammers.nether_hammer": "下界锤",
-  
-  "text.autoconfig.vanilla-hammers.option.fullBlockHitbox": "完整方块碰撞箱",
+
   "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "额外的原版材质锤子",
   "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "Lil Tater之锤",
-  "text.autoconfig.vanilla-hammers.option.enableFull3x3": "完整 3x3 碰撞箱",
-  "text.autoconfig.vanilla-hammers.option.alwaysShowSingleBlockHitbox": "始终显示单个碰撞箱",
-  "text.autoconfig.vanilla-hammers.option.showSingleBlockWhenSneaking": "潜行时显示单个碰撞箱",
-  "text.autoconfig.vanilla-hammers.option.breakSingleBlockWhenSneaking": "潜行时只破坏单个方块",
   "text.autoconfig.vanilla-hammers.category.default": "常规",
   "text.autoconfig.vanilla-hammers.title": "原版锤子配置文件",
   "text.autoconfig.vanilla-hammers.option.durabilityModifier": "锤子耐久调节器",
   
-  "item.vanilla-hammers.dynagear_hammer": "%s锤"
-  
-  "enchantment.vanilla-hammers.gigantism_curse": "巨化诅咒",
+  "item.vanilla-hammers.dynagear_hammer": "%s锤",
 
   "vanilla-hammers.advancements.root.title": "原版锤子",
   "vanilla-hammers.advancements.stone_hammer.title": "坚如磐石之锤",

@@ -42,6 +42,10 @@ dependencies {
     modCompile "me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}"
     include "me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}"
 
+    // magna for hammers
+    modImplementation 'com.github.Draylar:magna:4944b89bef'
+    include 'com.github.Draylar:magna:4944b89bef'
+
     // dev modmenu
     modCompile "io.github.prospector:modmenu:${project.mod_menu_version}"
 }

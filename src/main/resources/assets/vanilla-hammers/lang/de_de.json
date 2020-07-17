@@ -18,13 +18,8 @@
   "item.vanilla-hammers.glowstone_hammer": "Glowstonehammer",
   "item.vanilla-hammers.nether_hammer": "Netherhammer",
 
-  "text.autoconfig.vanilla-hammers.option.fullBlockHitbox": "Volle Block Hitbox",
   "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "Extra Vanilla Material Hammer",
   "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "Tater Hammer",
-  "text.autoconfig.vanilla-hammers.option.enableFull3x3": "Volle 3x3 Hitbox",
-  "text.autoconfig.vanilla-hammers.option.alwaysShowSingleBlockHitbox": "Immer nur Einzelblock Hitbox anzeigen",
-  "text.autoconfig.vanilla-hammers.option.showSingleBlockWhenSneaking": "Einzelblock Hizbox beim Ducken",
-  "text.autoconfig.vanilla-hammers.option.breakSingleBlockWhenSneaking": "Einzelblock Abbauen beim Ducken",
   "text.autoconfig.vanilla-hammers.category.default": "Allgemeines",
   "text.autoconfig.vanilla-hammers.title": "Vanilla Hammers Einstellungen"
 }

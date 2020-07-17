@@ -20,20 +20,13 @@
   "item.vanilla-hammers.glowstone_hammer": "발광석 망치",
   "item.vanilla-hammers.nether_hammer": "네더 망치",
 
-  "text.autoconfig.vanilla-hammers.option.fullBlockHitbox": "풀 블록 히트박스",
   "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "엑스트라 바닐라 소재 망치",
   "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "감자 망치",
-  "text.autoconfig.vanilla-hammers.option.enableFull3x3": "풀 3x3 히트박스",
-  "text.autoconfig.vanilla-hammers.option.alwaysShowSingleBlockHitbox": "항상 히트박스 1개 표시",
-  "text.autoconfig.vanilla-hammers.option.showSingleBlockWhenSneaking": "몰래 숨길 때 히트박스 1개 표시",
-  "text.autoconfig.vanilla-hammers.option.breakSingleBlockWhenSneaking": "몰래 숨길 때 한 번 부수기",
   "text.autoconfig.vanilla-hammers.category.default": "보통",
   "text.autoconfig.vanilla-hammers.title": "바닐라 망치 환경설정",
   "text.autoconfig.vanilla-hammers.option.durabilityModifier": "망치 내구성 변경",
 
   "item.vanilla-hammers.dynagear_hammer": "%s 망치",
-
-  "enchantment.vanilla-hammers.gigantism_curse": "거대증의 저주",
 
   "vanilla-hammers.advancements.root.title": "바닐라 망치",
   "vanilla-hammers.advancements.stone_hammer.title": "극도로 단단한 망치",

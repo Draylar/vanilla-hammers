@@ -1,8 +1,8 @@
 package com.github.draylar.vh;
 
-import com.github.draylar.vh.registry.Enchantments;
 import com.github.draylar.vh.config.VanillaHammersConfig;
 import com.github.draylar.vh.registry.Items;
+import draylar.magna.api.optional.MagnaOptionals;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
@@ -21,9 +21,8 @@ public class VanillaHammers implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		Items.init();
-		Enchantments.init();
-
 		FuelRegistry.INSTANCE.add(Items.WOOD, 400);
+		MagnaOptionals.optInForCurse();
 	}
 
 	public static Identifier id(String name) {

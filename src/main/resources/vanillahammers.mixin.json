@@ -7,7 +7,6 @@
     "SilkTouchEnchantmentMixin"
   ],
   "client": [
-    "HammerLargeOutlineMixin"
   ],
   "injectors": {
     "defaultRequire": 1

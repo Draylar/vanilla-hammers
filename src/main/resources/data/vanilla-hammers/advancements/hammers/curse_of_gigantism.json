@@ -25,7 +25,7 @@
             "item": "minecraft:enchanted_book",
             "stored_enchantments": [
               {
-                "enchantment": "vanilla-hammers:gigantism_curse"
+                "enchantment": "magna:gigantism_curse"
               }
             ]
           }

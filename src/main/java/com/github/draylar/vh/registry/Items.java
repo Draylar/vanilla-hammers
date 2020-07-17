@@ -2,8 +2,9 @@ package com.github.draylar.vh.registry;
 
 import com.github.draylar.vh.VanillaHammers;
 import com.github.draylar.vh.config.VanillaHammersConfig;
-import com.github.draylar.vh.api.HammerItem;
+import com.github.draylar.vh.item.FieryHammerItem;
 import com.github.draylar.vh.material.HammerMaterials;
+import draylar.magna.item.HammerItem;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
@@ -13,6 +14,7 @@ import net.minecraft.util.registry.Registry;
 
 public class Items {
 
+    // default hammers
     public static Item WOOD = register(HammerMaterials.WOOD, 3, -2.5f, "wooden");
     public static Item STONE = register(HammerMaterials.STONE, 4, -2.6f, "stone");
     public static Item IRON = register(HammerMaterials.IRON, 5, -2.8f, "iron");
@@ -20,6 +22,7 @@ public class Items {
     public static Item DIAMOND = register(HammerMaterials.DIAMOND, 10, -3f, "diamond");
     public static Item NETHERITE = register(HammerMaterials.NETHERITE, 11, -3.1f, "netherite");
 
+    // extra hammers
     public static Item EMERALD;
     public static Item OBSIDIAN;
     public static Item LAPIS;
@@ -29,8 +32,10 @@ public class Items {
     public static Item ENDER;
     public static Item SLIME;
 
+    // lil-tater
     public static Item TATER;
 
+    // nether things
     public static Item GLOWSTONE;
     public static Item NETHER;
     public static Item VIBRANIUM;
@@ -41,7 +46,7 @@ public class Items {
             OBSIDIAN = register(HammerMaterials.OBSIDIAN, 7, -3.5f, "obsidian");
             LAPIS = register(HammerMaterials.QUARTZ, 5, -2f, "lapis");
             QUARTZ = register(HammerMaterials.LAPIS, 3, -2.5f, "quartz");
-            FIERY = register(HammerMaterials.FIERY, 6, -2.3f, "fiery");
+            FIERY = registerFiery(HammerMaterials.FIERY, 6, -2.3f, "fiery");
             PRISMARINE = register(HammerMaterials.PRISMARINE, 6, -2.3f, "prismarine");
             ENDER = register(HammerMaterials.ENDER, 10, -3.3f, "ender");
             SLIME = register(HammerMaterials.SLIME, 7, -3f, "slime");
@@ -58,6 +63,7 @@ public class Items {
             GLOWSTONE = register(HammerMaterials.GLOWSTONE, 5, -2.3f, "glowstone");
             VIBRANIUM = register(HammerMaterials.VIBRANIUM, 10, -2.9f, "vibranium");
         }
+
         if(FabricLoader.getInstance().isModLoaded("adabraniummod")) {
             if (VIBRANIUM==null) { // prevent both netherthings and adabranium from registering a vibranium hammer. These are version exclusive so it should never happen
                 VIBRANIUM = register(HammerMaterials.VIBRANIUM,10,-2.9F,"vibranium");
@@ -66,6 +72,10 @@ public class Items {
     }
 
     private static Item register(ToolMaterial material, int attackDamage, float attackSpeed, String hammerName) {
-        return Registry.register(Registry.ITEM, VanillaHammers.id(hammerName + "_hammer"), new HammerItem(material, attackDamage, attackSpeed));
+        return Registry.register(Registry.ITEM, VanillaHammers.id(hammerName + "_hammer"), new HammerItem(material, attackDamage, attackSpeed, new Item.Settings().group(VanillaHammers.GROUP)));
+    }
+
+    private static Item registerFiery(ToolMaterial material, int attackDamage, float attackSpeed, String hammerName) {
+        return Registry.register(Registry.ITEM, VanillaHammers.id(hammerName + "_hammer"), new FieryHammerItem(material, attackDamage, attackSpeed, new Item.Settings().group(VanillaHammers.GROUP)));
     }
 }
