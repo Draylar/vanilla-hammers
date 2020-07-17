@@ -20,7 +20,7 @@ public class Items {
     public static Item IRON = register(HammerMaterials.IRON, 5, -2.8f, "iron");
     public static Item GOLDEN = register(HammerMaterials.GOLD, 5, -2.5f, "golden");
     public static Item DIAMOND = register(HammerMaterials.DIAMOND, 10, -3f, "diamond");
-    public static Item NETHERITE = register(HammerMaterials.NETHERITE, 11, -3.1f, "netherite");
+    public static Item NETHERITE = register(HammerMaterials.NETHERITE, 11, -3.1f, "netherite", new Item.Settings().group(VanillaHammers.GROUP).fireproof());
 
     // extra hammers
     public static Item EMERALD;
@@ -44,8 +44,8 @@ public class Items {
         if (AutoConfig.getConfigHolder(VanillaHammersConfig.class).getConfig().enableExtraMaterials) {
             EMERALD = register(HammerMaterials.EMERALD, 11, -3f, "emerald");
             OBSIDIAN = register(HammerMaterials.OBSIDIAN, 7, -3.5f, "obsidian");
-            LAPIS = register(HammerMaterials.QUARTZ, 5, -2f, "lapis");
-            QUARTZ = register(HammerMaterials.LAPIS, 3, -2.5f, "quartz");
+            LAPIS = register(HammerMaterials.LAPIS, 5, -2f, "lapis");
+            QUARTZ = register(HammerMaterials.QUARTZ, 3, -2.5f, "quartz");
             FIERY = registerFiery(HammerMaterials.FIERY, 6, -2.3f, "fiery");
             PRISMARINE = register(HammerMaterials.PRISMARINE, 6, -2.3f, "prismarine");
             ENDER = register(HammerMaterials.ENDER, 10, -3.3f, "ender");
@@ -73,6 +73,10 @@ public class Items {
 
     private static Item register(ToolMaterial material, int attackDamage, float attackSpeed, String hammerName) {
         return Registry.register(Registry.ITEM, VanillaHammers.id(hammerName + "_hammer"), new HammerItem(material, attackDamage, attackSpeed, new Item.Settings().group(VanillaHammers.GROUP)));
+    }
+
+    private static Item register(ToolMaterial material, int attackDamage, float attackSpeed, String hammerName, Item.Settings settings) {
+        return Registry.register(Registry.ITEM, VanillaHammers.id(hammerName + "_hammer"), new HammerItem(material, attackDamage, attackSpeed, settings));
     }
 
     private static Item registerFiery(ToolMaterial material, int attackDamage, float attackSpeed, String hammerName) {
