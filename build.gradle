@@ -16,12 +16,8 @@ repositories {
     jcenter()
 
     maven { url = "https://maven.fabricmc.net/" }
-    maven { url = 'http://maven.sargunv.s3-website-us-west-2.amazonaws.com/' }
-    maven { url = 'http://server.bbkr.space:8081/artifactory/libs-release' }
     maven { url = 'https://jitpack.io' }
-    maven { url = "https://maven.swordglowsblue.com" }
-
-    jcenter()
+    maven { url "http://server.bbkr.space:8081/artifactory/libs-release" }
 }
 
 apply plugin: 'eclipse'
@@ -32,22 +28,20 @@ dependencies {
     modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
     modCompile "net.fabricmc.fabric-api:fabric-api:${project.api_version}"
 
-    // LibCD for conditional recipes
-    modCompile "com.github.CottonMC:LibCD:1.16-SNAPSHOT"
-    include "com.github.CottonMC:LibCD:1.16-SNAPSHOT"
-
-    // config
-//    modCompile "me.shedaniel.cloth:config-2:${project.cloth_config_version}"
-//    include "me.shedaniel.cloth:config-2:${project.cloth_config_version}"
-//    modCompile "me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}"
-//    include "me.sargunvohra.mcmods:autoconfig1u:${project.auto_config_version}"
-
     // magna for hammers
-    modImplementation 'com.github.Draylar:magna:ff2559e6bc'
-    include 'com.github.Draylar:magna:ff2559e6bc'
+    modImplementation 'com.github.Draylar:magna:d7ed39c243'
+    include 'com.github.Draylar:magna:d7ed39c243'
+
+    // libcd
+    modImplementation 'io.github.cottonmc:LibCD:2.5.0+'
+    include 'io.github.cottonmc:LibCD:2.5.0+'
 
     // dev modmenu
     modCompile "io.github.prospector:modmenu:${project.mod_menu_version}"
+
+    // static data for hammer loading
+    modImplementation "io.github.cottonmc:StaticData:1.1.2"
+    include "io.github.cottonmc:StaticData:1.1.2"
 }
 
 processResources {

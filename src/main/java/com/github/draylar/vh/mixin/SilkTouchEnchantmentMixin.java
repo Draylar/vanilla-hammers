@@ -1,6 +1,6 @@
 package com.github.draylar.vh.mixin;
 
-import com.github.draylar.vh.registry.Items;
+import com.github.draylar.vh.item.ExtendedHammerItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.SilkTouchEnchantment;
@@ -17,6 +17,11 @@ public class SilkTouchEnchantmentMixin extends Enchantment {
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return !stack.getItem().equals(Items.FIERY);
+        if (stack.getItem() instanceof ExtendedHammerItem) {
+            ExtendedHammerItem item = (ExtendedHammerItem) stack.getItem();
+            return item.getData().canSmelt();
+        }
+
+        return super.isAcceptableItem(stack);
     }
 }
