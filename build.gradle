@@ -29,8 +29,8 @@ dependencies {
     modCompile "net.fabricmc.fabric-api:fabric-api:${project.api_version}"
 
     // magna for hammers
-    modImplementation 'com.github.Draylar:magna:292766d59b'
-    include 'com.github.Draylar:magna:292766d59b'
+    modImplementation 'com.github.Draylar:magna:02c69175b6'
+    include 'com.github.Draylar:magna:02c69175b6'
 
     // libcd
     modImplementation 'io.github.cottonmc:LibCD:2.5.0+'
