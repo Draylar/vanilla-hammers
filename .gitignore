@@ -24,3 +24,5 @@ bin/
 
 run/
 *.launch
+
+/local.properties

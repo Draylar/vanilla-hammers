@@ -1,6 +1,14 @@
 plugins {
-    id 'fabric-loom' version '0.4-SNAPSHOT'
+    id 'fabric-loom' version '0.5-SNAPSHOT'
     id 'maven-publish'
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
+}
+
+Properties properties = new Properties()
+File localProperties = new File("local.properties")
+
+if(localProperties.exists()) {
+    properties.load(localProperties.newDataInputStream())
 }
 
 sourceCompatibility = 1.8
@@ -8,6 +16,35 @@ targetCompatibility = 1.8
 
 archivesBaseName = project.modid
 version = project.version + "-" + project.minecraft_version
+
+curseforge {
+    apiKey = properties.getProperty("API_KEY")
+
+    project {
+        id = '317756'
+        releaseType = 'release'
+
+        addGameVersion project.minecraft_version
+        addGameVersion 'Java 8'
+        addGameVersion 'Fabric'
+
+        changelog = getChangelogFor(project.version.toString())
+
+        String s = project.buildDir.path + "\\libs\\" + archivesBaseName + "-" + version + ".jar"
+        mainArtifact(file(s))
+
+        relations {
+            requiredDependency 'fabric-api'
+            requiredDependency 'libcd'
+            requiredDependency 'modmenu'
+        }
+    }
+
+    options {
+        debug = true
+        forgeGradleIntegration = false
+    }
+}
 
 minecraft {
 }
@@ -29,12 +66,16 @@ dependencies {
     modCompile "net.fabricmc.fabric-api:fabric-api:${project.api_version}"
 
     // magna for hammers
-    modImplementation 'com.github.Draylar:magna:02c69175b6'
-    include 'com.github.Draylar:magna:02c69175b6'
+    modImplementation ('com.github.Draylar:magna:a7ee77a9') {
+        exclude group: "net.fabricmc"
+    }
+    include 'com.github.Draylar:magna:a7ee77a9'
 
     // libcd
-    modImplementation 'io.github.cottonmc:LibCD:2.5.0+'
-    include 'io.github.cottonmc:LibCD:2.5.0+'
+    modImplementation ('io.github.cottonmc:LibCD:3.0.2+1.16.2') {
+        exclude group: "net.fabricmc"
+    }
+    include 'io.github.cottonmc:LibCD:3.0.2+1.16.2'
 
     // dev modmenu
     modCompile "io.github.prospector:modmenu:${project.mod_menu_version}"
@@ -95,4 +136,17 @@ publishing {
         // uncomment to publish to the local maven
         // mavenLocal()
     }
+}
+
+static String getChangelogFor(String version) {
+    File file = new File('changelog.txt')
+    List<String> lines = file.readLines('utf-8')
+
+    for(String s : lines) {
+        if(s.startsWith(String.format("%s=", version))) {
+            return s.replace(String.format("%s=", version), "")
+        }
+    }
+
+    throw new UnsupportedOperationException(String.format("No changelog was present for version %s!", version))
 }
