@@ -41,7 +41,6 @@ curseforge {
     }
 
     options {
-        debug = true
         forgeGradleIntegration = false
     }
 }
