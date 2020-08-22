@@ -1,11 +1,8 @@
 package com.github.draylar.vh.data;
 
-import com.github.draylar.vh.VanillaHammers;
 import com.github.draylar.vh.mixin.ItemGroupAccessor;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
-
-import java.beans.Transient;
 
 public class HammerData {
 
