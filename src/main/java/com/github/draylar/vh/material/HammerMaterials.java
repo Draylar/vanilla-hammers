@@ -30,7 +30,6 @@ public enum HammerMaterials implements ToolMaterial {
         );
     });
 
-
     private final int miningLevel;
     private final int durability;
     private final float blockBreakSpeed;

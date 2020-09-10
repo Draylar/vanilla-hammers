@@ -8,7 +8,6 @@ import net.minecraft.util.registry.Registry;
 
 public class CustomToolMaterial implements ToolMaterial {
 
-
     private int enchantability;
     private float miningSpeedMultiplier;
     private int durability;
