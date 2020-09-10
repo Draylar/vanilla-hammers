@@ -16,9 +16,6 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
-import net.fabricmc.fabric.impl.tool.attribute.ToolManagerImpl;
-import net.fabricmc.fabric.impl.tool.attribute.handlers.ModdedToolsVanillaBlocksToolHandler;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -28,8 +25,6 @@ import net.minecraft.util.registry.Registry;
 
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 public class VanillaHammers implements ModInitializer {
@@ -64,7 +59,6 @@ public class VanillaHammers implements ModInitializer {
 
 	private void loadHammerData() {
 		Set<StaticDataItem> hammerFile = StaticData.getAllInDirectory("hammers");
-		List<Item> allHammers = new ArrayList<>();
 
 		for(StaticDataItem item : hammerFile) {
 			try {
@@ -72,24 +66,16 @@ public class VanillaHammers implements ModInitializer {
 
 				// read & register each hammer
 				HammerData data = GSON.fromJson(reader, HammerData.class);
-				Item registered = register(data);
-
-				// collect non-null hammers
-				if(registered != null) {
-					allHammers.add(registered);
-				}
+				register(data);
 
 				reader.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-
-		// add hammers to tool tag
-		ToolManagerImpl.tag(FabricToolTags.PICKAXES).register(new ModdedToolsVanillaBlocksToolHandler(allHammers));
 	}
 
-	public static Item register(HammerData data) {
+	public static void register(HammerData data) {
 		// only register if the hammer is not extra (wood -> diamond), or if it is extra (lapis, emerald, ...) and the option is enabled
 		if (!data.isExtra() || data.isExtra() && CONFIG.enableExtraMaterials) {
 
@@ -118,10 +104,9 @@ public class VanillaHammers implements ModInitializer {
 			// add hammer to tag
 			String path = data.getId() + "_hammer";
 			Identifier registryID = path.contains(":") ? new Identifier(path) : id(path);
-			return Registry.register(Registry.ITEM, registryID, hammerItem);
+			Registry.register(Registry.ITEM, registryID, hammerItem);
 		}
 
-		return null;
 	}
 
 	public static Identifier id(String name) {

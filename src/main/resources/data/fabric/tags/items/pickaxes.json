@@ -1,0 +1,61 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "vanilla-hammers:diamond_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:emerald_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:ender_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:fiery_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:golden_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:iron_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:lapis_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:netherite_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:obsidian_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:prismarine_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:quartz_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:slime_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:stone_hammer",
+      "required": false
+    },
+    {
+      "id": "vanilla-hammers:wooden_hammer",
+      "required": false
+    }
+  ]
+}
