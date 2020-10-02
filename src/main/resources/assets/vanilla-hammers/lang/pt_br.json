@@ -1,0 +1,62 @@
+{
+  "itemGroup.vanilla-hammers.group": "Martelo vanilla",
+
+  "item.vanilla-hammers.wooden_hammer": "Martelo de madeira",
+  "item.vanilla-hammers.stone_hammer": "Martelo de pedra",
+  "item.vanilla-hammers.iron_hammer": "Martelo de ferro",
+  "item.vanilla-hammers.golden_hammer": "Martelo dourado",
+  "item.vanilla-hammers.diamond_hammer": "Martelo de diamante",
+  "item.vanilla-hammers.netherite_hammer": "Martelo de netherite",
+  "item.vanilla-hammers.emerald_hammer": "Martelo de esmeralda",
+  "item.vanilla-hammers.obsidian_hammer": "Martelo de obsidiana",
+  "item.vanilla-hammers.lapis_hammer": "Martelo de lapis lazuli",
+  "item.vanilla-hammers.quartz_hammer": "Martelo de quartzo",
+  "item.vanilla-hammers.tater_hammer": "Martelo da batatinha",
+  "item.vanilla-hammers.fiery_hammer": "Martelo de fogo",
+  "item.vanilla-hammers.prismarine_hammer": "Martelo prismarino",
+  "item.vanilla-hammers.slime_hammer": "Martelo de slime",
+  "item.vanilla-hammers.ender_hammer": "Martelo do ender",
+
+  "item.vanilla-hammers.vibranium_hammer": "Martelod e vibranium",
+  "item.vanilla-hammers.glowstone_hammer": "Martelo de pedra luminosa ",
+  "item.vanilla-hammers.nether_hammer": "Martelo do nether",
+
+  "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "Materiais Vanillas extras para martelos",
+  "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "Martelo de batata",
+  "text.autoconfig.vanilla-hammers.option.durabilityModifier": "Modificador de durabilidade do martelo",
+
+  "item.vanilla-hammers.dynagear_hammer": "%s Martelos"
+
+  "vanilla-hammers.advancements.root.title": "Martelos vanilla",
+  "vanilla-hammers.advancements.stone_hammer.title": "Martelo de rocha solida",
+  "vanilla-hammers.advancements.slime_hammer.title": "Arma saltitante",
+  "vanilla-hammers.advancements.lapis_hammer.title": "Orçamento de Diamantes",
+  "vanilla-hammers.advancements.iron_hammer.title": "ganhando uma melhoria(martelo)",
+  "vanilla-hammers.advancements.prismarine_hammer.title": "Alternativas aquáticas",
+  "vanilla-hammers.advancements.quartz_hammer.title": "Iniciantes impetuasos",
+  "vanilla-hammers.advancements.golden_hammer.title": "Ricas soluções de mineração",
+  "vanilla-hammers.advancements.diamond_hammer.title": "Martelo prestigioso",
+  "vanilla-hammers.advancements.netherite_hammer.title": "Conquista impetuosa eterna",
+  "vanilla-hammers.advancements.emerald_hammer.title": "martelo do comerciante",
+  "vanilla-hammers.advancements.fiery_hammer.title": "Fim impetuoso",
+  "vanilla-hammers.advancements.obsidian_hammer.title": "Martelo de rocha realmente solida",
+  "vanilla-hammers.advancements.ender_hammer.title": "O martelo acima de tudo",
+
+  "vanilla-hammers.advancements.root.description": "Que tal um martelo em vez disso?",
+  "vanilla-hammers.advancements.stone_hammer.description": "Comece com o basico e construa um martelo de pedra.",
+  "vanilla-hammers.advancements.slime_hammer.description": "Construa um machado de slime... Que tal batem em algo com isso?",
+  "vanilla-hammers.advancements.lapis_hammer.description": "É um um martelo de diamante, não um martelo de Lapis!",
+  "vanilla-hammers.advancements.iron_hammer.description": "Construa um martelo de ferro.",
+  "vanilla-hammers.advancements.prismarine_hammer.description": "Construa um martelo prismatico com o material dos mares.",
+  "vanilla-hammers.advancements.quartz_hammer.description": "Comece a sua conquista impetuosa com um martelo de quartzo.",
+  "vanilla-hammers.advancements.golden_hammer.description": "O martelo dourado não funciona muito bem, mas certamente te faz parecer bem descolado!",
+  "vanilla-hammers.advancements.diamond_hammer.description": "Construa um martelo de diamante.",
+  "vanilla-hammers.advancements.netherite_hammer.description": "Constrou um martelo de netherite, forjada com joias antigas de um tempo desconhecido.",
+  "vanilla-hammers.advancements.emerald_hammer.description": " Mostre que você é unico com um martelo de esmeralda.",
+  "vanilla-hammers.advancements.fiery_hammer.description": "Finalize sua descida com um martelo de fogo.",
+  "vanilla-hammers.advancements.obsidian_hammer.description": "Construa um martelo de obsidiana e va minerar por 17 horas sem parar.",
+  "vanilla-hammers.advancements.ender_hammer.description": "Construa o martelo do ender para acabar com os seus problemas de mineração.",
+
+  "vanilla-hammers.advancements.curse_of_gigantism.title": "A maldição do gigantismo",
+  "vanilla-hammers.advancements.curse_of_gigantism.description": "Ache o raro livro da cura do gigantismo, isso pode ser usado para melhorar um marterlo em troca de velocidade."
+}
