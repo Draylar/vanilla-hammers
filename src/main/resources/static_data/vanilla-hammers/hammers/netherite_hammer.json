@@ -1,0 +1,11 @@
+{
+  "id": "netherite",
+  "miningLevel": 4,
+  "durability": 2031,
+  "blockBreakSpeed": 2.6,
+  "attackDamage": 11,
+  "attackSpeed": -3.1,
+  "enchantability": 15,
+  "repairIngredient": "minecraft:netherite_ingot",
+  "isFireImmune": true
+}

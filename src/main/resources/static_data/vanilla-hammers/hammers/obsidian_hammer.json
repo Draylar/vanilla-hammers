@@ -1,0 +1,11 @@
+{
+  "id": "obsidian",
+  "miningLevel": 2,
+  "durability": 2048,
+  "blockBreakSpeed": 1.4,
+  "attackDamage": 7,
+  "attackSpeed": -3.5,
+  "enchantability": 5,
+  "repairIngredient": "minecraft:obsidian",
+  "isExtra": true
+}

@@ -1,0 +1,11 @@
+{
+  "id": "lapis",
+  "miningLevel": 1,
+  "durability": 220,
+  "blockBreakSpeed": 1.7,
+  "attackDamage": 5,
+  "attackSpeed": -2,
+  "enchantability": 30,
+  "repairIngredient": "minecraft:lapis_lazuli",
+  "isExtra": true
+}

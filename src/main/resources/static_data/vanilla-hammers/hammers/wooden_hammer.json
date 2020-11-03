@@ -1,0 +1,11 @@
+{
+  "id": "wooden",
+  "miningLevel": 0,
+  "durability": 59,
+  "blockBreakSpeed": 0.57,
+  "attackDamage": 3,
+  "attackSpeed": -2.5,
+  "enchantability": 15,
+  "repairIngredient": "minecraft:oak_planks",
+  "burnTime": 400
+}

@@ -17,6 +17,7 @@ targetCompatibility = 1.8
 archivesBaseName = project.modid
 version = project.version + "-" + project.minecraft_version
 
+// I can't figure out how to do this optionally right now, so if you're forking or PRing, just comment out.
 curseforge {
     apiKey = properties.getProperty("API_KEY")
 
@@ -45,6 +46,7 @@ curseforge {
     }
 }
 
+
 minecraft {
 }
 
@@ -71,17 +73,19 @@ dependencies {
     include "com.github.Draylar:magna:${project.magna_version}"
 
     // libcd
-    modImplementation ('io.github.cottonmc:LibCD:3.0.2+1.16.2') {
+    modImplementation ('io.github.cottonmc:LibCD:3.0.3+1.16.3') {
         exclude group: "net.fabricmc"
     }
-    include 'io.github.cottonmc:LibCD:3.0.2+1.16.2'
+    include 'io.github.cottonmc:LibCD:3.0.3+1.16.3'
 
     // dev modmenu
     modCompile "io.github.prospector:modmenu:${project.mod_menu_version}"
 
     // static data for hammer loading
-    modImplementation "io.github.cottonmc:StaticData:1.1.2"
-    include "io.github.cottonmc:StaticData:1.1.2"
+    modImplementation ('com.github.Draylar:static-content:1.0.1' ) {
+        exclude group: "net.fabricmc"
+    }
+    include 'com.github.Draylar:static-content:1.0.1'
 }
 
 processResources {

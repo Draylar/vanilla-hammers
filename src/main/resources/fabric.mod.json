@@ -15,10 +15,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.github.draylar.vh.VanillaHammers"
+      "draylar.vh.VanillaHammers"
     ],
     "modmenu": [
-      "com.github.draylar.vh.ModMenuIntegration"
+      "draylar.vh.ModMenuIntegration"
     ]
   },
   "mixins": [

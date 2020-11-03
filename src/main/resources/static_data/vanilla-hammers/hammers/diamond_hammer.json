@@ -1,0 +1,10 @@
+{
+  "id": "diamond",
+  "miningLevel": 3,
+  "durability": 1561,
+  "blockBreakSpeed": 2.3,
+  "attackDamage": 10,
+  "attackSpeed": -3,
+  "enchantability": 10,
+  "repairIngredient": "minecraft:diamond"
+}

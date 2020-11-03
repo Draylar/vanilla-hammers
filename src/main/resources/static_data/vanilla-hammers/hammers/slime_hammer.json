@@ -1,0 +1,12 @@
+{
+  "id": "slime",
+  "miningLevel": 2,
+  "durability": 1500,
+  "blockBreakSpeed": 1.7,
+  "attackDamage": 7,
+  "attackSpeed": -3,
+  "enchantability": 20,
+  "repairIngredient": "minecraft:slime_ball",
+  "isExtra": true,
+  "hasExtraKnockback": true
+}

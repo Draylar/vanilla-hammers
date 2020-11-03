@@ -1,0 +1,13 @@
+{
+  "id": "fiery",
+  "miningLevel": 3,
+  "durability": 750,
+  "blockBreakSpeed": 2,
+  "attackDamage": 6,
+  "attackSpeed": -2.3,
+  "enchantability": 15,
+  "repairIngredient": "minecraft:magma_block",
+  "isExtra": true,
+  "isFireImmune": true,
+  "smelts": true
+}

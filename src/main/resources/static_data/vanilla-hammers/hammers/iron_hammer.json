@@ -1,0 +1,10 @@
+{
+  "id": "iron",
+  "miningLevel": 2,
+  "durability": 250,
+  "blockBreakSpeed": 1.7,
+  "attackDamage": 5,
+  "attackSpeed": -2.8,
+  "enchantability": 14,
+  "repairIngredient": "minecraft:iron_ingot"
+}

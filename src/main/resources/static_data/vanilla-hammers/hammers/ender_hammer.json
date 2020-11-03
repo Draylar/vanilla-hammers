@@ -1,0 +1,11 @@
+{
+  "id": "ender",
+  "miningLevel": 3,
+  "durability": 1561,
+  "blockBreakSpeed": 2.85,
+  "attackDamage": 10,
+  "attackSpeed": -3.3,
+  "enchantability": 10,
+  "repairIngredient": "minecraft:ender_pearl",
+  "isExtra": true
+}

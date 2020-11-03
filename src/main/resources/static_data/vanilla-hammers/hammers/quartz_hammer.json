@@ -1,0 +1,11 @@
+{
+  "id": "quartz",
+  "miningLevel": 2,
+  "durability": 1028,
+  "blockBreakSpeed": 2.3,
+  "attackDamage": 3,
+  "attackSpeed": -2.5,
+  "enchantability": 10,
+  "repairIngredient": "minecraft:quartz",
+  "isExtra": true
+}

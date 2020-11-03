@@ -1,0 +1,10 @@
+{
+  "id": "stone",
+  "miningLevel": 1,
+  "durability": 131,
+  "blockBreakSpeed": 1.15,
+  "attackDamage": 4,
+  "attackSpeed": -2.6,
+  "enchantability": 5,
+  "repairIngredient": "minecraft:stone"
+}

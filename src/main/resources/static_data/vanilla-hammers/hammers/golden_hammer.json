@@ -1,0 +1,10 @@
+{
+  "id": "golden",
+  "miningLevel": 0,
+  "durability": 100,
+  "blockBreakSpeed": 3.5,
+  "attackDamage": 5,
+  "attackSpeed": -2.5,
+  "enchantability": 22,
+  "repairIngredient": "minecraft:gold_ingot"
+}
