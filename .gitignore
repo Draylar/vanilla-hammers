@@ -26,3 +26,4 @@ run/
 *.launch
 
 /local.properties
+/logs/
