@@ -1,3 +1,4 @@
+3.0.1-1.16.5=Updates Magna to 1.5.1, which includes support for extended reach through REA, an auto-pickup option, and a client-side visual fix. JIJs Maybe Data for conditional recipes
 3.0.1-1.16.3=update libcd to 3.0.3
 3.0.0-1.16.3=Full internal conversion to Static Content. Support with old mods will be broken but easy to fix. Standard durability modifier has been changed from 5 to 3 due to balancing complaints. Previous worlds will still work fine.
 2.0.8-1.16.2=Actually fixes modded ore support for Hammers. Includes another additional patch for animations/breaking outlines when looking at non-effective blocks.
