@@ -133,7 +133,7 @@ public class HammerData implements ContentData {
     }
 
     public float getBlockBreakSpeed() {
-        return blockBreakSpeed;
+        return blockBreakSpeed * (float) VanillaHammers.CONFIG.breakSpeedMultiplier;
     }
 
     public float getAttackDamage() {
