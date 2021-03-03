@@ -1,7 +1,7 @@
 package draylar.vh.config;
 
-import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
+import me.shedaniel.autoconfig.ConfigData;
+import me.shedaniel.autoconfig.annotation.Config;
 
 @Config(name = "vanilla-hammers")
 public class VanillaHammersConfig implements ConfigData {
