@@ -1,11 +1,15 @@
 package draylar.vh.config;
 
-import me.shedaniel.autoconfig.ConfigData;
-import me.shedaniel.autoconfig.annotation.Config;
+import draylar.omegaconfig.api.Config;
 
-@Config(name = "vanilla-hammers")
-public class VanillaHammersConfig implements ConfigData {
+public class VanillaHammersConfig implements Config {
+
     public boolean enableExtraMaterials = true;
     public int durabilityModifier = 5;
     public double breakSpeedMultiplier = 1.0;
+
+    @Override
+    public String getName() {
+        return "vanilla-hammers";
+    }
 }
