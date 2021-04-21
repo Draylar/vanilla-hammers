@@ -54,9 +54,12 @@ dependencies {
     modImplementation 'com.github.Draylar:maybe-data:master-SNAPSHOT'
     include 'com.github.Draylar:maybe-data:master-SNAPSHOT'
 
-    // Cloth/AutoConfig
+    // Config solutions + Cloth Config for Magna
     modImplementation 'com.github.Draylar.omega-config:omega-config-base:1.0.4-beta'
     include 'com.github.Draylar.omega-config:omega-config-base:1.0.4-beta:min'
+    modApi("me.shedaniel.cloth:cloth-config-fabric:4.11.14") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
 }
 
 processResources {
