@@ -1,14 +1,6 @@
 plugins {
     id 'fabric-loom' version '0.5-SNAPSHOT'
     id 'maven-publish'
-    id 'com.matthewprenger.cursegradle' version '1.4.0'
-}
-
-Properties properties = new Properties()
-File localProperties = new File("local.properties")
-
-if(localProperties.exists()) {
-    properties.load(localProperties.newDataInputStream())
 }
 
 sourceCompatibility = 1.8
@@ -16,36 +8,6 @@ targetCompatibility = 1.8
 
 archivesBaseName = project.modid
 version = project.version + "-" + project.minecraft_version
-
-// I can't figure out how to do this optionally right now, so if you're forking or PRing, just comment out.
-curseforge {
-    apiKey = properties.getProperty("API_KEY")
-
-    project {
-        id = '317756'
-        releaseType = 'release'
-
-        addGameVersion project.minecraft_version
-        addGameVersion 'Java 8'
-        addGameVersion 'Fabric'
-
-        changelog = getChangelogFor(project.version.toString())
-
-        String s = project.buildDir.path + "\\libs\\" + archivesBaseName + "-" + version + ".jar"
-        mainArtifact(file(s))
-
-        relations {
-            requiredDependency 'fabric-api'
-            requiredDependency 'libcd'
-            requiredDependency 'modmenu'
-        }
-    }
-
-    options {
-        forgeGradleIntegration = false
-    }
-}
-
 
 minecraft {
 }
@@ -58,8 +20,6 @@ repositories {
     maven { url "http://server.bbkr.space:8081/artifactory/libs-release" }
     maven { url "https://maven.shedaniel.me/" }
 }
-
-apply plugin: 'eclipse'
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -151,17 +111,4 @@ publishing {
         // uncomment to publish to the local maven
         // mavenLocal()
     }
-}
-
-static String getChangelogFor(String version) {
-    File file = new File('changelog.txt')
-    List<String> lines = file.readLines('utf-8')
-
-    for(String s : lines) {
-        if(s.startsWith(String.format("%s=", version))) {
-            return s.replace(String.format("%s=", version), "")
-        }
-    }
-
-    throw new UnsupportedOperationException(String.format("No changelog was present for version %s!", version))
 }
