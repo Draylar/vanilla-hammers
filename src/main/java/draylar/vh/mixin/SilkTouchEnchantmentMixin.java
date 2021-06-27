@@ -17,8 +17,7 @@ public class SilkTouchEnchantmentMixin extends Enchantment {
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        if (stack.getItem() instanceof ExtendedHammerItem) {
-            ExtendedHammerItem item = (ExtendedHammerItem) stack.getItem();
+        if (stack.getItem() instanceof ExtendedHammerItem item) {
             return !item.getData().canSmelt();
         }
 
