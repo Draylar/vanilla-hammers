@@ -22,7 +22,7 @@
       "conditions": {
         "items": [
           {
-            "item": "vanilla-hammers:stone_hammer"
+            "items": ["vanilla-hammers:stone_hammer"]
           }
         ]
       }

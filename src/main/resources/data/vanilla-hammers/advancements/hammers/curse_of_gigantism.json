@@ -22,7 +22,9 @@
       "conditions": {
         "items": [
           {
-            "item": "minecraft:enchanted_book",
+            "items": [
+              "minecraft:enchanted_book"
+            ],
             "stored_enchantments": [
               {
                 "enchantment": "magna:gigantism_curse"
