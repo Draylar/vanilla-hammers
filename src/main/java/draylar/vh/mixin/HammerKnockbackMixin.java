@@ -17,9 +17,7 @@ public class HammerKnockbackMixin {
     @Inject(at = @At("HEAD"), method = "getKnockback", cancellable = true)
     private static void getKnockback(LivingEntity livingEntity, CallbackInfoReturnable<Integer> info) {
         ItemStack heldStack = livingEntity.getMainHandStack();
-        if(heldStack.getItem() instanceof ExtendedHammerItem) {
-            ExtendedHammerItem hammerItem = (ExtendedHammerItem) heldStack.getItem();
-
+        if(heldStack.getItem() instanceof ExtendedHammerItem hammerItem) {
             // check data associated with hammer item for extra kb
             if(hammerItem.getData().hasExtraKnockback()) {
                 info.setReturnValue(SLIME_KNOCKBACK_MODIFIER);

@@ -31,9 +31,7 @@ public class VanillaHammers implements ModInitializer {
 	private void registerCallbackHandlers() {
 		AttackEntityCallback.EVENT.register((playerEntity, world, hand, entity, entityHitResult) -> {
 			ItemStack handStack = playerEntity.getMainHandStack();
-			if(handStack.getItem() instanceof ExtendedHammerItem) {
-				ExtendedHammerItem extendedHammerItem = (ExtendedHammerItem) handStack.getItem();
-
+			if(handStack.getItem() instanceof ExtendedHammerItem extendedHammerItem) {
 				// set entity on fire if this hammer smelts blocks
 				if(extendedHammerItem.getData().canSmelt()) {
 					entity.setOnFireFor(4);
