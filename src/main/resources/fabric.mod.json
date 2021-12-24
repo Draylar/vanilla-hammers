@@ -9,7 +9,7 @@
     "Draylar"
   ],
 
-  "license": "GPLv3",
+  "license": "MIT",
   "icon": "assets/vanilla-hammers/icon.png",
 
   "environment": "*",

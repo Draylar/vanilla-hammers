@@ -47,6 +47,10 @@ dependencies {
         exclude group: "net.fabricmc"
     }
 
+    modImplementation ("io.github.cottonmc:StaticData:1.1.2") {
+        exclude group: "net.fabricmc.fabric-api"
+    }
+
     // Static Content (https://github.com/Draylar/static-content) for hammer loading and compat
     include "com.github.Draylar:static-content:${project.static_content_version}"
     modImplementation ("com.github.Draylar:static-content:${project.static_content_version}") {
