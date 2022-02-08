@@ -18,8 +18,4 @@ For more information about the mod, check out the wiki:
 
 ## License
 
-Vanilla Hammers is licensed under GPLv3. This means you can:
-  - include it in a pack
-  - distribute it where appropriate
-  - re-publish the mod if I go inactive
-  - modify the source code
+1.18 Vanilla Hammers is licensed under MIT. Previous versions (<= 1.17) are licensed and distributed under GPLv3.
