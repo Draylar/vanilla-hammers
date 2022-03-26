@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.10-SNAPSHOT'
+    id 'fabric-loom' version '0.11-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -8,9 +8,6 @@ targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.modid
 version = project.version + "-" + project.minecraft_version
-
-minecraft {
-}
 
 repositories {
     maven { url "https://maven.fabricmc.net/" }
@@ -40,12 +37,6 @@ dependencies {
     // dev modmenu
     include "com.terraformersmc:modmenu:${project.mod_menu_version}"
     modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
-
-    // LibCD (https://github.com/CottonMC/LibCD) for conditional recipes and advancements
-    include "io.github.cottonmc:LibCD:${project.libcd_version}"
-    modImplementation ("io.github.cottonmc:LibCD:${project.libcd_version}") {
-        exclude group: "net.fabricmc"
-    }
 
     modImplementation ("io.github.cottonmc:StaticData:1.1.2") {
         exclude group: "net.fabricmc.fabric-api"

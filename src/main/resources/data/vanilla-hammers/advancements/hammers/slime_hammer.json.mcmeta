@@ -1,5 +1,0 @@
-{
-    "when": [
-        { "libcd:item_exists": "vanilla-hammers:slime_hammer" }
-    ]
-}
