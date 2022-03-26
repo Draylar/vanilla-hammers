@@ -35,7 +35,6 @@ dependencies {
     }
 
     // dev modmenu
-    include "com.terraformersmc:modmenu:${project.mod_menu_version}"
     modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
 
     modImplementation ("io.github.cottonmc:StaticData:1.1.2") {
