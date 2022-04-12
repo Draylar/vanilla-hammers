@@ -25,7 +25,7 @@
   "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "Martelo de batata",
   "text.autoconfig.vanilla-hammers.option.durabilityModifier": "Modificador de durabilidade do martelo",
 
-  "item.vanilla-hammers.dynagear_hammer": "%s Martelos"
+  "item.vanilla-hammers.dynagear_hammer": "%s Martelos",
 
   "vanilla-hammers.advancements.root.title": "Martelos vanilla",
   "vanilla-hammers.advancements.stone_hammer.title": "Martelo de rocha solida",
