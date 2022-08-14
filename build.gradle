@@ -27,8 +27,18 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // Magna (https://github.com/Draylar/magna) for hammers
+    /* original
     include "com.github.Draylar:magna:${project.magna_version}"
     modImplementation ("com.github.Draylar:magna:${project.magna_version}") {
+        exclude group: "net.fabricmc"
+        exclude group: "com.jamieswhiteshirt"
+        exclude group: "me.shedaniel.cloth"
+    }
+    */
+
+    // 1.19 fork
+    include "com.github.PTOM76:magna:${project.magna_version}"
+    modImplementation ("com.github.PTOM76:magna:${project.magna_version}") {
         exclude group: "net.fabricmc"
         exclude group: "com.jamieswhiteshirt"
         exclude group: "me.shedaniel.cloth"
