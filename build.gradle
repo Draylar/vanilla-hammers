@@ -34,9 +34,6 @@ dependencies {
         exclude group: "me.shedaniel.cloth"
     }
 
-    // dev modmenu
-    modImplementation "com.terraformersmc:modmenu:${project.mod_menu_version}"
-
     modImplementation ("io.github.cottonmc:StaticData:1.1.2") {
         exclude group: "net.fabricmc.fabric-api"
     }
@@ -46,10 +43,6 @@ dependencies {
     modImplementation ("com.github.Draylar:static-content:${project.static_content_version}") {
         exclude group: "net.fabricmc"
     }
-
-    // JIJ Maybe Data (https://github.com/Draylar/maybe-data) for optional recipes
-    include "com.github.Draylar:maybe-data:${project.maybe_data_version}"
-    modImplementation "com.github.Draylar:maybe-data:${project.maybe_data_version}"
 
     // Config solutions + Cloth Config for Magna
     modImplementation "com.github.Draylar.omega-config:omega-config-base:${project.omega_config_version}"
