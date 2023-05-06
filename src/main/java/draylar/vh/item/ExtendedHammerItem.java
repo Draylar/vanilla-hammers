@@ -5,7 +5,6 @@ import draylar.magna.api.BlockProcessor;
 import draylar.magna.item.HammerItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.RecipeType;
@@ -30,7 +29,7 @@ public class ExtendedHammerItem extends HammerItem {
 
     @Override
     public BlockProcessor getProcessor(World world, PlayerEntity player, BlockPos pos, ItemStack heldStack) {
-        if(data.canSmelt()) {
+        if (data.canSmelt()) {
             return (tool, input) -> {
                 Optional<SmeltingRecipe> cooked = world.getRecipeManager().getFirstMatch(
                         RecipeType.SMELTING,
@@ -39,7 +38,7 @@ public class ExtendedHammerItem extends HammerItem {
                 );
 
                 if (cooked.isPresent()) {
-                    return cooked.get().getOutput().copy();
+                    return cooked.get().getOutput(world.getRegistryManager()).copy();
                 }
 
                 return input;
@@ -47,10 +46,5 @@ public class ExtendedHammerItem extends HammerItem {
         } else {
             return super.getProcessor(world, player, pos, heldStack);
         }
-    }
-
-    @Override
-    public boolean isIn(ItemGroup group) {
-        return super.isIn(group) || group.equals(data.getGroup());
     }
 }
