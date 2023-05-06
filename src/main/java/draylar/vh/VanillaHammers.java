@@ -7,24 +7,30 @@ import draylar.vh.config.VanillaHammersConfig;
 import draylar.vh.data.HammerData;
 import draylar.vh.item.ExtendedHammerItem;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class VanillaHammers implements ModInitializer {
 
 	public static String MODID = "vanilla-hammers";
 	public static VanillaHammersConfig CONFIG = OmegaConfig.register(VanillaHammersConfig.class);
-	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(id("group"), () -> new ItemStack(Registry.ITEM.get(id("diamond_hammer"))));
+	public static ItemGroup GROUP;
 
 	@Override
 	public void onInitialize() {
 		MagnaOptionals.optInForCurse();
 		StaticContent.load(id("hammers"), HammerData.class);
+		GROUP = FabricItemGroup.builder(id("group"))
+				.displayName(Text.literal("Vanilla Hammers"))
+				.icon(() -> new ItemStack(Registries.ITEM.get(id("diamond_hammer"))))
+				.entries((context, entries) -> entries.addAll(HammerData.ENTRY_SET))
+			.build();
 		registerCallbackHandlers();
 	}
 
