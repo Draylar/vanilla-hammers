@@ -28,12 +28,12 @@ public class HammerData implements ContentData {
     private final boolean isExtra;
     private final int burnTime;
     private final boolean hasExtraKnockback;
-    private final Identifier group;
+    private final String group;
     private transient ItemGroup cachedGroup;
 
     public static final Set<ItemStack> ENTRY_SET = ItemStackSet.create();
 
-    public HammerData(String id, int miningLevel, int durability, float blockBreakSpeed, float attackDamage, float attackSpeed, int enchantability, Identifier repairIngredient, boolean isFireImmune, boolean smelts, int breakRadius, boolean isExtra, int burnTime, boolean hasExtraKnockback, Identifier group) {
+    public HammerData(String id, int miningLevel, int durability, float blockBreakSpeed, float attackDamage, float attackSpeed, int enchantability, Identifier repairIngredient, boolean isFireImmune, boolean smelts, int breakRadius, boolean isExtra, int burnTime, boolean hasExtraKnockback, String group) {
         this.id = id;
         this.miningLevel = miningLevel;
         this.durability = durability;
@@ -86,6 +86,19 @@ public class HammerData implements ContentData {
             // add hammer to item group
             ENTRY_SET.add(hammerItem.getDefaultStack());
         }
+    }
+
+    public ItemGroup getGroup() {
+        if (cachedGroup == null && group != null) {
+            for (ItemGroup itemGroup : ItemGroups.getGroups()) {
+                if (itemGroup.getDisplayName().toString().equals(group)) {
+                    cachedGroup = itemGroup;
+                    break;
+                }
+            }
+        }
+
+        return cachedGroup;
     }
 
     public boolean hasExtraKnockback() {
