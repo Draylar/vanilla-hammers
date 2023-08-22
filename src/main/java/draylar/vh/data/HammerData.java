@@ -4,12 +4,13 @@ import draylar.staticcontent.api.ContentData;
 import draylar.vh.VanillaHammers;
 import draylar.vh.item.ExtendedHammerItem;
 import draylar.vh.material.CustomToolMaterial;
-import draylar.vh.mixin.ItemGroupAccessor;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.item.*;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+
+import java.util.Set;
 
 public class HammerData implements ContentData {
 
@@ -29,6 +30,8 @@ public class HammerData implements ContentData {
     private final boolean hasExtraKnockback;
     private final String group;
     private transient ItemGroup cachedGroup;
+
+    public static final Set<ItemStack> ENTRY_SET = ItemStackSet.create();
 
     public HammerData(String id, int miningLevel, int durability, float blockBreakSpeed, float attackDamage, float attackSpeed, int enchantability, Identifier repairIngredient, boolean isFireImmune, boolean smelts, int breakRadius, boolean isExtra, int burnTime, boolean hasExtraKnockback, String group) {
         this.id = id;
@@ -54,7 +57,7 @@ public class HammerData implements ContentData {
         if (!isExtra() || isExtra() && VanillaHammers.CONFIG.enableExtraMaterials) {
 
             // setup settings
-            Item.Settings settings = new Item.Settings().group(VanillaHammers.GROUP);
+            Item.Settings settings = new Item.Settings();
             if (isFireImmune()) {
                 settings.fireproof();
             }
@@ -78,15 +81,17 @@ public class HammerData implements ContentData {
             // add hammer to tag
             String path = getId() + "_hammer";
             Identifier registryID = path.contains(":") ? new Identifier(path) : VanillaHammers.id(path);
-            Registry.register(Registry.ITEM, registryID, hammerItem);
+            Registry.register(Registries.ITEM, registryID, hammerItem);
+
+            // add hammer to item group
+            ENTRY_SET.add(hammerItem.getDefaultStack());
         }
     }
 
     public ItemGroup getGroup() {
-        // attempt to get group from string
-        if (cachedGroup == null && (group != null && !group.isEmpty())) {
-            for (ItemGroup itemGroup : ItemGroup.GROUPS) {
-                if (((ItemGroupAccessor) itemGroup).getId().equals(group)) {
+        if (cachedGroup == null && group != null) {
+            for (ItemGroup itemGroup : ItemGroups.getGroups()) {
+                if (itemGroup.getDisplayName().toString().equals(group)) {
                     cachedGroup = itemGroup;
                     break;
                 }

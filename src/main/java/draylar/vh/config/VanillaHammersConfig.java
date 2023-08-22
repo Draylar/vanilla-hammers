@@ -1,6 +1,6 @@
 package draylar.vh.config;
 
-import draylar.omegaconfig.api.Config;
+import dev.draylar.omegaconfig.api.Config;
 
 public class VanillaHammersConfig implements Config {
 
