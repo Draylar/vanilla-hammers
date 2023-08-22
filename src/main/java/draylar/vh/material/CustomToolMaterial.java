@@ -4,17 +4,17 @@ import draylar.vh.VanillaHammers;
 import draylar.vh.data.HammerData;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class CustomToolMaterial implements ToolMaterial {
 
-    private int enchantability;
-    private float miningSpeedMultiplier;
-    private int durability;
-    private float attackDamage;
-    private int miningLevel;
-    private Ingredient ingredient;
+    private final int enchantability;
+    private final float miningSpeedMultiplier;
+    private final int durability;
+    private final float attackDamage;
+    private final int miningLevel;
+    private final Ingredient ingredient;
 
     public CustomToolMaterial(int enchantability, float miningSpeedMultiplier, int durability, float attackDamage, int miningLevel, Ingredient ingredient) {
         this.enchantability = enchantability;
@@ -32,7 +32,7 @@ public class CustomToolMaterial implements ToolMaterial {
                 (data.getDurability() == 0 ? 500 : data.getDurability()) * VanillaHammers.CONFIG.durabilityModifier,
                 data.getAttackDamage() == 0 ? 4 : data.getAttackDamage(),
                 data.getMiningLevel(),
-                Ingredient.ofItems(Registry.ITEM.get(data.getRepairIngredient() == null ? new Identifier("iron_ingot") : data.getRepairIngredient()))
+                Ingredient.ofItems(Registries.ITEM.get(data.getRepairIngredient() == null ? new Identifier("iron_ingot") : data.getRepairIngredient()))
         );
     }
 
