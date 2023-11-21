@@ -1,6 +1,6 @@
 package draylar.vh;
 
-import draylar.magna.api.optional.MagnaOptionals;
+import dev.draylar.magna.api.optional.MagnaOptionals;
 import draylar.omegaconfig.OmegaConfig;
 import draylar.staticcontent.StaticContent;
 import draylar.vh.config.VanillaHammersConfig;
@@ -12,6 +12,9 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
@@ -20,17 +23,18 @@ public class VanillaHammers implements ModInitializer {
 
 	public static String MODID = "vanilla-hammers";
 	public static VanillaHammersConfig CONFIG = OmegaConfig.register(VanillaHammersConfig.class);
-	public static ItemGroup GROUP;
+	private static final RegistryKey<ItemGroup> ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, id("group"));
 
 	@Override
 	public void onInitialize() {
 		MagnaOptionals.optInForCurse();
 		StaticContent.load(id("hammers"), HammerData.class);
-		GROUP = FabricItemGroup.builder(id("group"))
-				.displayName(Text.literal("Vanilla Hammers"))
+		Registry.register(Registries.ITEM_GROUP, ITEM_GROUP, FabricItemGroup.builder()
+				.displayName(Text.translatable("itemGroup.vanilla-hammers.group"))
 				.icon(() -> new ItemStack(Registries.ITEM.get(id("diamond_hammer"))))
 				.entries((context, entries) -> entries.addAll(HammerData.ENTRY_SET))
-			.build();
+			.build()
+		);
 		registerCallbackHandlers();
 	}
 

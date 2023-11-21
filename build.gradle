@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.11-SNAPSHOT'
+    id 'fabric-loom' version '1.2-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -12,9 +12,9 @@ version = project.version + "-" + project.minecraft_version
 repositories {
     maven { url "https://maven.fabricmc.net/" }
     maven { url 'https://jitpack.io' }
-    maven { url "https://server.bbkr.space/artifactory/libs-release" }
     maven { url "https://maven.shedaniel.me/" }
     maven { url "https://maven.terraformersmc.com/"}
+    maven { url "https://maven.draylar.dev/releases" }
 }
 
 dependencies {
@@ -27,26 +27,25 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // Magna (https://github.com/Draylar/magna) for hammers
-    include "com.github.Draylar:magna:${project.magna_version}"
-    modImplementation ("com.github.Draylar:magna:${project.magna_version}") {
+    include "dev.draylar:magna:${project.magna_version}"
+    modImplementation ("dev.draylar:magna:${project.magna_version}") {
         exclude group: "net.fabricmc"
         exclude group: "com.jamieswhiteshirt"
         exclude group: "me.shedaniel.cloth"
-    }
-
-    modImplementation ("io.github.cottonmc:StaticData:1.1.2") {
-        exclude group: "net.fabricmc.fabric-api"
+        exclude module: "omega-config-base"
     }
 
     // Static Content (https://github.com/Draylar/static-content) for hammer loading and compat
     include "com.github.Draylar:static-content:${project.static_content_version}"
     modImplementation ("com.github.Draylar:static-content:${project.static_content_version}") {
+        exclude group: "com.github.Draylar"
         exclude group: "net.fabricmc"
+        exclude module: "omega-config-base"
     }
 
     // Config solutions + Cloth Config for Magna
-    modImplementation "com.github.Draylar.omega-config:omega-config-base:${project.omega_config_version}"
-    include "com.github.Draylar.omega-config:omega-config-base:${project.omega_config_version}"
+    modImplementation "dev.draylar.omega-config:omega-config-base:${project.omega_config_version}"
+    include "dev.draylar.omega-config:omega-config-base:${project.omega_config_version}"
     modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
         exclude(group: "net.fabricmc.fabric-api")
     }

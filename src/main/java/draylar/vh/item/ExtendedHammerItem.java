@@ -1,8 +1,8 @@
 package draylar.vh.item;
 
+import dev.draylar.magna.api.BlockProcessor;
+import dev.draylar.magna.item.HammerItem;
 import draylar.vh.data.HammerData;
-import draylar.magna.api.BlockProcessor;
-import draylar.magna.item.HammerItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
