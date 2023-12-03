@@ -1,9 +1,12 @@
 {
+  "itemGroup.vanilla-hammers.group": "Vanilla Hammers",
+
   "item.vanilla-hammers.wooden_hammer": "Деревянный молот",
   "item.vanilla-hammers.stone_hammer": "Каменный молот",
   "item.vanilla-hammers.iron_hammer": "Железный молот",
   "item.vanilla-hammers.golden_hammer": "Золотой молот",
   "item.vanilla-hammers.diamond_hammer": "Алмазный молот",
+  "item.vanilla-hammers.netherite_hammer": "Незеритовый молот",
   "item.vanilla-hammers.emerald_hammer": "Изумрудный молот",
   "item.vanilla-hammers.obsidian_hammer": "Обсидиановый молот",
   "item.vanilla-hammers.lapis_hammer": "Лазуритовый молот",
@@ -18,9 +21,10 @@
   "item.vanilla-hammers.glowstone_hammer": "Светокаменный молот",
   "item.vanilla-hammers.nether_hammer": "Незерский молот",
 
-  "text.autoconfig.vanilla-hammers.category.default": "Основное",
-  "text.autoconfig.vanilla-hammers.title": "Конфигурация Vanilla Hammers",
-
+  "text.autoconfig.vanilla-hammers.option.enableExtraMaterials": "Молотки из экстра ванильного материала",
+  "text.autoconfig.vanilla-hammers.option.enableTaterHammer": "Картофельный молот",
+  "text.autoconfig.vanilla-hammers.option.durabilityModifier": "Модификатор прочности молота",
+  
   "item.vanilla-hammers.dynagear_hammer": "%s молот",
 
   "vanilla-hammers.advancements.root.title": "Vanilla Hammers",
@@ -32,6 +36,7 @@
   "vanilla-hammers.advancements.quartz_hammer.title": "Огненное начало",
   "vanilla-hammers.advancements.golden_hammer.title": "Богатое решение",
   "vanilla-hammers.advancements.diamond_hammer.title": "Престижный молот",
+  "vanilla-hammers.advancements.netherite_hammer.title": "Вечное огненное завоевание",
   "vanilla-hammers.advancements.emerald_hammer.title": "Молот торговца",
   "vanilla-hammers.advancements.fiery_hammer.title": "Огненный конец",
   "vanilla-hammers.advancements.obsidian_hammer.title": "Очень твердокаменный молот",
@@ -46,6 +51,7 @@
   "vanilla-hammers.advancements.quartz_hammer.description": "Начните своё огненное завоевание с Кварцевого молота",
   "vanilla-hammers.advancements.golden_hammer.description": "Золотой молот не очень практичный, но выглядит круто!",
   "vanilla-hammers.advancements.diamond_hammer.description": "Создайте Алмазный молот",
+  "vanilla-hammers.advancements.netherite_hammer.description": "Создайте Незеритовый молот, выкованный из древних драгоценных камней неизвестного времени.",
   "vanilla-hammers.advancements.emerald_hammer.description": "Покажите свою уникальность с помощью Изумрудного молота",
   "vanilla-hammers.advancements.fiery_hammer.description": "Завершите своё нисхождение с помощью Огненного молота",
   "vanilla-hammers.advancements.obsidian_hammer.description": "Создайте Обсидиановый молот и продолжайте добывать руду 17 часов без остановок",
